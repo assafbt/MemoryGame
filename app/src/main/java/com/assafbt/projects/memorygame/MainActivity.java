@@ -16,6 +16,16 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-            //init1
+            /*
+            *
+            * make new project
+            * press "ignore" (not "add root")
+            * goto VCS-> import into version control->share on github
+            * and only than the project will get it's first init
+            * good luck 
+            *
+             */
+
+
     }
 }
