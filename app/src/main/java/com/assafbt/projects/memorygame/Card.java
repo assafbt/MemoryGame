@@ -18,6 +18,12 @@ public class Card {
 //    private String imgDown;
 //    private String fileName;
 
+    public Card(){
+        faceUp =false;
+        imgUp ="";
+        quantity =0;
+    }
+
 
     public boolean getFaceUp() {
         return faceUp;

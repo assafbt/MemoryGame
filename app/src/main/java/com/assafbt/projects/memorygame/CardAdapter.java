@@ -34,29 +34,34 @@ public class CardAdapter extends ArrayAdapter<Card> {
 
 
 
-    @Override
+
     public View getView(int position, View convertView, ViewGroup parent, Card Obj) {
 
         View view;
-        view = layoutInflater.inflate(R.layout.activity_main, null);
+        view = layoutInflater.inflate(R.layout.activity_game, null);
         String Rid;
-        for (int i=0;i<=3;i++){
-            for (int j=0;j<=3;j++){
+        /*for (int i = 0; i <= 3; i++) {
+            for (int j = 0; j <= 3; j++) {
 
-
-        Card ca = getItem(position);
-        Rid = "R.id.img"+i+""+j;
-        ImageView picture = (ImageView) view.findViewById(R.id.img+""+i+""+j);
-
-        Picasso.with(context).load(ca.getImgUp()).placeholder(R.drawable.wether3).fit().into(picture);
-
+                // chang the images on the table
 
             }
         }
 
+*/
+
+
+                Card card = new Card();//getItem(position);
+
+                //sRid = "R.id.img" + i + "" + j;
+                ImageView picture = (ImageView) view.findViewById(R.id.img00);
+
+                Picasso.with(context).load(card.getImgUp()).placeholder(R.drawable.images).fit().into(picture);
+
+
 
         return view;
 
-
+    }
 
 }
