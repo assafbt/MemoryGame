@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.assafbt.projects.memorygame.GameActivity"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:id="@+id/gameFrame"
+        android:layout_height="393dp"
+        android:layout_gravity="top">
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|top"
+            android:id="@+id/tableFrame"
+            android:textAlignment="center">
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:baselineAligned="false">
+
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img00"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_vertical" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img01"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img02"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img03"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img10"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img11"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img12"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img13"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img20"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img21"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img22"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img23"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img30"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img31"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img32"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+                <ImageView
+                    android:src="@drawable/images"
+                    android:id="@+id/img33"
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="100dp"
+                    android:layout_weight="1" />
+            </TableRow>
+        </TableLayout>
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scoreFrame"
+        android:layout_gravity="bottom">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Restart"
+            android:id="@+id/restartBTN"
+            android:layout_gravity="left|center_vertical" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Your score:"
+            android:id="@+id/textView2"
+            android:layout_gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="00:00:00"
+            android:id="@+id/scoreView"
+            android:layout_gravity="center_vertical|right" />
+    </FrameLayout>
+</LinearLayout>
