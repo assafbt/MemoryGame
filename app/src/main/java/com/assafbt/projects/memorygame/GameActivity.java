@@ -9,27 +9,37 @@ import com.squareup.picasso.Picasso;
 
 public class GameActivity extends AppCompatActivity {
 
-    Card card00;
-    ImageView im00;
+    Card card[] = new Card[8];
+    ImageView im00, im01; //X16
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        card00 = new Card();
-        card00.setImgUp("http://openweathermap.org/img/w/10d.png");
 
-        //System.out.println("###" + card00.getImgUp());
+        //here we should choose 8 pictures from the gallery and then enter their addresses into pisSet
+        for(int i =0; i<8;i++)
+            card[i].setImgUp("http://openweathermap.org/img/w/10d.png");
 
-        im00 = (ImageView)findViewById(R.id.img03);
-
-            Picasso.with(getApplicationContext()).load(card00.getImgUp())
-                    .placeholder(R.drawable.ic_launcher) // optional
-                    .into(im00);
+        //X16
+        im00 = (ImageView)findViewById(R.id.img00);
+        setPicture(card, im00);
 
 
 
+
+
+
+    }
+
+
+    private void setPicture(Card[] picStock, ImageView iv){
+        int i = 0;
+        Picasso.with(getApplicationContext()).load(picStock[i].getImgUp())
+                .placeholder(R.drawable.ic_launcher) // optional
+                .into(iv);
 
     }
 }
