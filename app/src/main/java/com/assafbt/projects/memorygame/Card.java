@@ -14,13 +14,13 @@ public class Card {
     private boolean faceUp;
     private String imgUp;
     int quantity;
-
 //    private String imgDown;
 //    private String fileName;
 
     public Card(){
         faceUp =false;
         imgUp ="";
+//        imgDown="";
         quantity =0;
     }
 
@@ -51,6 +51,7 @@ public class Card {
     }
 
 
+
 /*
     public String getImgDown() {
         return imgDown;
@@ -60,12 +61,14 @@ public class Card {
         this.imgDown = imgDown;
     }
 
+
     public String getFileName(){
         return fileName;
     }
 
     public void setFileName(String fileName){
         this.fileName = fileName;
+
     }
 
     */

@@ -38,21 +38,21 @@
                     android:layout_gravity="center_vertical"
                     android:scaleType="centerCrop" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img01"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img02"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img03"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
@@ -66,28 +66,28 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img10"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img11"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img12"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img13"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
@@ -100,28 +100,28 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img20"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img21"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img22"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img23"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
@@ -134,28 +134,28 @@
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img30"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img31"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img32"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1" />
                 <ImageView
-                    android:src="@drawable/images"
+
                     android:id="@+id/img33"
                     android:layout_gravity="center"
                     android:layout_width="50dp"
