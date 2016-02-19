@@ -12,19 +12,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
 
 
 public class GameActivity extends AppCompatActivity {
-    int itemPerRow =4;
+    int itemPerRow = 4;
     Card card[] = new Card[8];
     ImageView   im00,im01,im02,im03,
                 im10,im11,im12,im13,
                 im20, im21, im22, im23,
                 im30, im31, im32, im33;
-    ImageView im0[], im1[], im2[], im3[]; //X16
+    //ImageView im0[], im1[], im2[], im3[]; //X16
     TextView correctTime;
     Button rstBtn;
 
@@ -42,7 +43,9 @@ public class GameActivity extends AppCompatActivity {
     long updatedTime = 0L;
     int secs=0;
     int milliseconds=0;
-
+    DAL dalObj = new DAL(this);
+    SharedPreferences prefs;
+    SharedPreferences.Editor editor;
 
 
 
@@ -62,6 +65,11 @@ public class GameActivity extends AppCompatActivity {
 
         correctTime = (TextView) findViewById(R.id.scoreView);
         start();
+
+
+        prefs = getSharedPreferences("best", MODE_PRIVATE);
+        editor = prefs.edit();
+
         /*
         //here we should choose 8 pictures from the gallery and then enter their addresses into pisSet
         for(int i =0; i<8;i++) {
@@ -117,12 +125,13 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                allFaceDown();
+                restart();
                 //v.invalidate();
                 //showPictureOnClick(card, im02);
 
             }
         });
+
 
 
     }//onCreate
@@ -363,6 +372,13 @@ public class GameActivity extends AppCompatActivity {
 */
     }//allFaceDown
 
+    private void restart(){
+        stop(this.editor);
+        allFaceDown();
+        start();
+
+    }
+
     private void start(){
         if (!isRunning) {
             Log.e("Context", "let the game begin");
@@ -380,7 +396,23 @@ public class GameActivity extends AppCompatActivity {
 
     }//start
 
-    //stop
+    // stop the clock
+    public void stop(SharedPreferences.Editor editor){
+        customHandler.removeCallbacks(updateTimerThread);
+        if (isRunning) {//running
+            isRunning = false;
+/*
+            bestTime = dalObj.getRecord(lvl_cmpx);
+            int bestTimeValue = (int)updatedTime;
+            if ((bestTime == 0) || (bestTime > bestTimeValue)) { //check the best
+                dalObj.updateRecord(lvl_cmpx, bestTimeValue);
+
+                Toast.makeText(getApplicationContext(), "new record !", Toast.LENGTH_SHORT).show();
+                bestResultShowTime.setText(dalObj.convertToTimeStringFormat(bestTimeValue));
+
+            }*/
+        }
+    }//stop
 
     // time running
     private Runnable updateTimerThread = new Runnable() {
