@@ -1,12 +1,17 @@
 package com.assafbt.projects.memorygame;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Handler;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
@@ -20,8 +25,25 @@ public class GameActivity extends AppCompatActivity {
                 im20, im21, im22, im23,
                 im30, im31, im32, im33;
     ImageView im0[], im1[], im2[], im3[]; //X16
-
+    TextView correctTime;
     Button rstBtn;
+
+
+    boolean isRunning = false;
+    private static Context mContext;
+
+    private long startTime = 0L;
+    private long bestTime = 0L;
+
+    private Handler customHandler = new Handler();
+
+    long timeInMilliseconds = 0L;
+    long timeSwapBuff = 0L;
+    long updatedTime = 0L;
+    int secs=0;
+    int milliseconds=0;
+
+
 
 
     @Override
@@ -38,6 +60,8 @@ public class GameActivity extends AppCompatActivity {
 
         }
 
+        correctTime = (TextView) findViewById(R.id.scoreView);
+        start();
         /*
         //here we should choose 8 pictures from the gallery and then enter their addresses into pisSet
         for(int i =0; i<8;i++) {
@@ -74,7 +98,7 @@ public class GameActivity extends AppCompatActivity {
         allFaceDown();
 
 
-        
+        //problem with the for
         for (int clickCount=1; clickCount<3;clickCount++ ){
             Log.e("clickCount", "FOR, START " +clickCount+"");
             if (clickCount==2){
@@ -101,7 +125,7 @@ public class GameActivity extends AppCompatActivity {
         });
 
 
-    }
+    }//onCreate
 
     private int showPictureOnClick(int clickCount){
         if (clickCount<2) {
@@ -338,4 +362,42 @@ public class GameActivity extends AppCompatActivity {
         }
 */
     }//allFaceDown
-}
+
+    private void start(){
+        if (!isRunning) {
+            Log.e("Context", "let the game begin");
+            isRunning = true;
+        //    view.invalidate();
+            startTime = SystemClock.uptimeMillis();
+            customHandler.postDelayed(updateTimerThread, 0);
+        //    ((GameView) view).resetCounter();
+
+        }
+        else {
+            //do nothing;
+        }
+
+
+    }//start
+
+    //stop
+
+    // time running
+    private Runnable updateTimerThread = new Runnable() {
+
+        public void run() {
+
+            timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
+            updatedTime = timeSwapBuff + timeInMilliseconds;
+            secs = (int) (updatedTime / 1000);
+            secs = secs % 60;
+            milliseconds = (int) (updatedTime % 1000);
+            correctTime.setText(String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
+            customHandler.postDelayed(this, 0);
+
+        }//run
+
+    };//updateTimerThread
+
+
+}//GameActivity
