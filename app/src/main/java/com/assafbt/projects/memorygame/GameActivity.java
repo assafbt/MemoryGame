@@ -25,9 +25,14 @@ import java.util.Random;
 
 public class GameActivity extends AppCompatActivity {
 
+    boolean openCard = false;
+    String last;
+    int lastInt;
+    int pairsToGo = 8;
     int itemPerRow = 4;
    // MainActivity ma = new MainActivity();
-    Card card[] = new Card[8];
+    Card card[] = new Card[16];
+    String imagUri[][]= new String[8][2];
 
     ImageView   im00,im01,im02,im03,
                 im10,im11,im12,im13,
@@ -68,12 +73,9 @@ public class GameActivity extends AppCompatActivity {
         // init the face down card
        // String[] tmp = ma.getPicUri();
         for(int i =0; i<8;i++) {
-            card[i] = new Card();
-            //card[i].setImgDown("R.drawable.a11d");
-            Log.e("## ImgDown ##" + i, card[i].getImgUp());
-           // array[i] = ;
-     //       System.out.println("### prefs.getString "+i +"   "+prefs.getString("pic_" + i, "nothing"));
-            card[i].setImgUp(prefs.getString("pic_" + i, null));
+            imagUri[i][0] = new String();
+            imagUri[i][0]=prefs.getString("pic_" + i, null);
+            imagUri[i][1]="0";
 
         }
 
@@ -115,12 +117,14 @@ public class GameActivity extends AppCompatActivity {
         im33 = (ImageView)findViewById(R.id.img33);
 
 
-
+        newOrder();
         allFaceDown();
 
 
+       // while(pairsToGo!=0)
+            showPictureOnClick();
         //problem with the for
-        for (int clickCount=1; clickCount<3;clickCount++ ){
+        /*for (int clickCount=1; clickCount<3;clickCount++ ){
             Log.e("clickCount", "FOR, START " +clickCount+"");
             if (clickCount==2){
                 Log.e("clickCount", "FOR, IF= TRUE "+clickCount+"");
@@ -131,7 +135,7 @@ public class GameActivity extends AppCompatActivity {
                 clickCount = showPictureOnClick(clickCount);
             }
             Log.e("clickCount", "FOR, END " +clickCount+"");
-        }
+        }*/
 
         rstBtn = (Button)findViewById(R.id.restartBTN);
         rstBtn.setOnClickListener(new View.OnClickListener() {
@@ -149,35 +153,32 @@ public class GameActivity extends AppCompatActivity {
 
     }//onCreate
 
-    private int showPictureOnClick(int clickCount){
-        if (clickCount<2) {
+    private void showPictureOnClick(){
+      //  if (clickCount<2) {
             //1st row
             im00.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im00);
-
-
+                    showPicture(0, im00);
                 }
             });
             im01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im01);
-
+                    showPicture(1, im01);
                 }
             });
             im02.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im02);
+                    showPicture(2, im02);
 
                 }
             });
             im03.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im03);
+                    showPicture(3, im03);
 
                 }
             });
@@ -186,28 +187,28 @@ public class GameActivity extends AppCompatActivity {
             im10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im10);
+                    showPicture(4, im10);
 
                 }
             });
             im11.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im11);
+                    showPicture(5, im11);
 
                 }
             });
             im12.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im12);
+                    showPicture(6, im12);
 
                 }
             });
             im13.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im13);
+                    showPicture(7, im13);
 
                 }
             });
@@ -216,28 +217,28 @@ public class GameActivity extends AppCompatActivity {
             im20.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im20);
+                    showPicture(8, im20);
 
                 }
             });
             im21.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im21);
+                    showPicture(9, im21);
 
                 }
             });
             im22.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im22);
+                    showPicture(10, im22);
 
                 }
             });
             im23.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im23);
+                    showPicture(11, im23);
 
                 }
             });
@@ -246,119 +247,163 @@ public class GameActivity extends AppCompatActivity {
             im30.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im30);
+                    showPicture(12, im30);
 
                 }
             });
             im31.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im31);
+                    showPicture(13, im31);
 
                 }
             });
             im32.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im32);
+                    showPicture(14, im32);
 
                 }
             });
             im33.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(card, im33);
+                    showPicture(15, im33);
 
                 }
             });
 
-        }//if
-        return clickCount;
+       // }//if
+      //  return clickCount;
     }//showPictureOnClick
 
-    private void showPicture(Card[] picStock, ImageView iv){
-        Random r = new Random();
-        int num;
-        while(true) {
-            num = r.nextInt(7);
-            if(picStock[num].getQuantity()<2) {
-                picStock[num].setQuantity(picStock[num].getQuantity()+1);
-                Picasso.with(getApplicationContext()).load(picStock[num].getImgUp())
-                        .placeholder(R.drawable.ic_launcher) // optional
-                        .into(iv);
-                Log.e("## showPicture ##", "ddd");
-                break;
+    private void showPicture(int i, ImageView iv){
+
+        Picasso.with(getApplicationContext()).load(card[i].getImgUp())
+                .placeholder(R.drawable.ic_launcher) // optional
+                .into(iv);
+
+        if(!openCard){
+            last =card[i].getImgUp();
+            lastInt=i;
+            openCard=true;
+        }else{
+            openCard=false;
+                if(card[i].getImgUp().equals(last)) {
+                    pairsToGo--;
+                    card[i].setFaceUp(true);
+                    card[lastInt].setFaceUp(true);
+                    if(pairsToGo==0)
+                        stop(this.editor);
+            } else{
+
+                    Runnable r = new Runnable() {
+                        @Override
+                        public void run(){
+                            allFaceDown();
+                        }
+                    };
+
+                    Handler h = new Handler();
+                    h.postDelayed(r, 1000); // <-- the "1000" is the delay time in miliseconds
             }
+
         }
 
+
     }//showPicture
+
+    private void newOrder(){
+        System.out.println("### enter new order");
+        Random r = new Random();
+        int num;
+        for(int i =0; i<16;i++)
+            while(true) {
+                System.out.println("###  new orders i "+i);
+
+                num = r.nextInt(8);
+
+                if(imagUri[num][1].equals("0") || imagUri[num][1].equals("1")) {
+                    imagUri[num][1]=strPlusOne(imagUri[num][1]);
+                    card[i] = new Card();
+                    card[i].setImgUp(imagUri[num][0]);
+
+                    break;
+                }
+            }
+       // allFaceDown();
+    }//newOrder
 
     private void allFaceDown(){
 
         //1st row
+        if(!card[0].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im00);
-
+        if(!card[1].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im01);
-
+        if(!card[2].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im02);
-
+        if(!card[3].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im03);
 
         //2nd row
+        if(!card[4].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im10);
-
+        if(!card[5].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im11);
-
+        if(!card[6].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im12);
-
+        if(!card[7].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im13);
 
         //3rd row
+        if(!card[8].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im20);
-
+        if(!card[9].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im21);
-
+        if(!card[10].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im22);
-
+        if(!card[11].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im23);
 
         //4th row
+        if(!card[12].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im30);
-
+        if(!card[13].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im31);
-
+        if(!card[14].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im32);
-
+        if(!card[15].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im33);
@@ -449,6 +494,10 @@ public class GameActivity extends AppCompatActivity {
 
     };//updateTimerThread
 
-
+    private String strPlusOne(String str){
+        int num = Integer.parseInt(str);
+        num ++;
+        return num+"";
+    }
 
 }//GameActivity
