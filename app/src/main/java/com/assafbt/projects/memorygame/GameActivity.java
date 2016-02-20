@@ -3,8 +3,12 @@ package com.assafbt.projects.memorygame;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.SystemClock;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,8 +23,11 @@ import com.squareup.picasso.Picasso;
 
 
 public class GameActivity extends AppCompatActivity {
+
     int itemPerRow = 4;
+   // MainActivity ma = new MainActivity();
     Card card[] = new Card[8];
+
     ImageView   im00,im01,im02,im03,
                 im10,im11,im12,im13,
                 im20, im21, im22, im23,
@@ -54,12 +61,18 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        prefs = getSharedPreferences("shPref", Context.MODE_PRIVATE);
+        editor = prefs.edit();
+
         // init the face down card
+       // String[] tmp = ma.getPicUri();
         for(int i =0; i<8;i++) {
             card[i] = new Card();
             //card[i].setImgDown("R.drawable.a11d");
             Log.e("## ImgDown ##" + i, card[i].getImgUp());
-            card[i].setImgUp("http://openweathermap.org/img/w/10d.png");
+           // array[i] = ;
+     //       System.out.println("### prefs.getString "+i +"   "+prefs.getString("pic_" + i, "nothing"));
+            card[i].setImgUp(prefs.getString("pic_" + i, null));
 
         }
 
@@ -67,8 +80,7 @@ public class GameActivity extends AppCompatActivity {
         start();
 
 
-        prefs = getSharedPreferences("best", MODE_PRIVATE);
-        editor = prefs.edit();
+
 
         /*
         //here we should choose 8 pictures from the gallery and then enter their addresses into pisSet
@@ -430,6 +442,7 @@ public class GameActivity extends AppCompatActivity {
         }//run
 
     };//updateTimerThread
+
 
 
 }//GameActivity
