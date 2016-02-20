@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.Random;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -276,14 +277,19 @@ public class GameActivity extends AppCompatActivity {
     }//showPictureOnClick
 
     private void showPicture(Card[] picStock, ImageView iv){
-        int i = 2;
-
-
-
-        Picasso.with(getApplicationContext()).load(picStock[i].getImgUp())
-                .placeholder(R.drawable.ic_launcher) // optional
-                .into(iv);
-        Log.e("## showPicture ##", "ddd");
+        Random r = new Random();
+        int num;
+        while(true) {
+            num = r.nextInt(7);
+            if(picStock[num].getQuantity()<2) {
+                picStock[num].setQuantity(picStock[num].getQuantity()+1);
+                Picasso.with(getApplicationContext()).load(picStock[num].getImgUp())
+                        .placeholder(R.drawable.ic_launcher) // optional
+                        .into(iv);
+                Log.e("## showPicture ##", "ddd");
+                break;
+            }
+        }
 
     }//showPicture
 
