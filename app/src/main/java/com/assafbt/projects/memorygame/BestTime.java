@@ -13,13 +13,12 @@ import android.provider.BaseColumns;
  */
 public class BestTime {
 
-    public BestTime(){}
 
     public static  abstract  class TimeEntry implements BaseColumns {
         public static final String TABLE_NAME = "bestTimeDB";
-        public static final String FIRST = "first";
-        public static final String SECOND = "second";
-        public static final String THIRD = "third";
+        public static final String FIRST = "first_record";
+        public static final String SECOND = "second_record";
+        public static final String THIRD = "third_record";
 
     }
 }

@@ -12,6 +12,7 @@ import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -21,6 +22,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.File;
@@ -29,13 +31,16 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class MainActivity extends Activity {
-    Button start, select;
-    private static int RESULT_LOAD_IMG = 1;
+    Button start, select, reset;
+    private static int RESULT_LOAD_IMG = 8;
     String imgDecodableString;
   //  public String picUri[] = new String[8];
     int step = 0;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
+    DAL dalObj = new DAL(this);
+    SQLiteDatabase db;
+    DBHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,12 +51,29 @@ public class MainActivity extends Activity {
         editor = prefs.edit();
 
 
+        TextView best1v = (TextView) findViewById(R.id.best1View);
+        TextView best2v = (TextView) findViewById(R.id.best2View);
+        TextView best3v = (TextView) findViewById(R.id.best3View);
+
+
+        if (dalObj.isBDEmpty()){
+            dalObj.initRecords();
+        }
+
+            best1v.setText(dalObj.convertToTimeStringFormat(dalObj.getFirst()));
+            best2v.setText(dalObj.convertToTimeStringFormat(dalObj.getSecond()));
+            best3v.setText(dalObj.convertToTimeStringFormat(dalObj.getThird()));
+
+
+
+
            start = (Button)findViewById(R.id.startBTN);
              start.setOnClickListener(new View.OnClickListener() {
 
                  @Override
                  public void onClick(View v) {
                      startActivity(new Intent(getApplicationContext(), GameActivity.class));
+                     startActivity(getIntent());
 
                  }
              });
@@ -74,17 +96,51 @@ public class MainActivity extends Activity {
         });
 
 
-    }
+        reset = (Button) findViewById(R.id.resetBTN);
+        reset.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+
+                if(dalObj.isBDEmpty()){
+                    dalObj.initRecords();
+                }else {
+                    dalObj.resetScors();
+                }
+
+            }
+        });
+
+
+
+    }//onCreate
+
+    @Override
+    protected void onResume() {
+
+        super.onResume();
+        this.onCreate(null);
+/*
+
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+        startActivityForResult(intent,1 );
+
+*/
+
+
+    }//onResume
 
     public void loadImagefromGallery(View view) {
 
             // Create intent to Open Image applications like Gallery, Google Photos
-            Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+
+        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             // Start the Intent
 
             startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
            // Toast.makeText(this, "picture number "+i+" from 8 was loaded", Toast.LENGTH_SHORT).show();
+
 
     }//loadImagefromGallery
 
@@ -96,40 +152,7 @@ public class MainActivity extends Activity {
                     && null != data) {
                 // Get the Image from data
                 Uri selectedImage = data.getData();
-                // System.out.println("###  selected uri "+selectedImage);
-                //  picUri[step]=""+selectedImage;
-                /*System.out.println("### picUri  " + picUri[step]);*/
 
-                //  editor.putInt(arrayName +"_size", array.length);
-                // for(int i=0;i<8;i++)
-                editor.putString("pic_" + step, selectedImage+"");
-                editor.commit();
-                step++;
-
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
-                    .show();
-        }
-
-
-
-        /*
-
-        try {
-            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
-                    && null != data) {
-                // Get the Image from data
-                Uri selectedImage = data.getData();
-                // System.out.println("###  selected uri "+selectedImage);
-                //  picUri[step]=""+selectedImage;
-                /*//*System.out.println("### picUri  " + picUri[step]);*//**//*
-
-                //  editor.putInt(arrayName +"_size", array.length);
-                // for(int i=0;i<8;i++)
                 editor.putString("pic_" + step, selectedImage + "");
                 editor.commit();
                 step++;
@@ -141,58 +164,10 @@ public class MainActivity extends Activity {
         } catch (Exception e) {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
                     .show();
-        }*/
+        }
 
     }//onActivityResult
 
 
 
-
-/*
-    public void loadImagefromGallery(View view) {
-        Intent intent = new Intent();
-        intent.setType("image*//*");
-        intent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
-        intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Select Picture"), RESULT_LOAD_IMG);
-*//*
-        for(int i = 0;i<8;i++) {
-
-        }*//*
-    }//loadImagefromGallery
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        try {
-            if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
-                    && null != data) {
-                // Get the Image from data
-                Uri selectedImage = data.getData();
-               // System.out.println("###  selected uri "+selectedImage);
-              //  picUri[step]=""+selectedImage;
-                *//*System.out.println("### picUri  " + picUri[step]);*//*
-
-              //  editor.putInt(arrayName +"_size", array.length);
-               // for(int i=0;i<8;i++)
-                editor.putString("pic_" + step, selectedImage+"");
-                editor.commit();
-                step++;
-
-            } else {
-                Toast.makeText(this, "You haven't picked Image",
-                        Toast.LENGTH_LONG).show();
-            }
-        } catch (Exception e) {
-            Toast.makeText(this, "Something went wrong", Toast.LENGTH_LONG)
-                    .show();
-        }
-
-    }//onActivityResult*/
-
-/*    public String[] getPicUri(){
-        for(int i=0;i<8;i++)
-        System.out.println("### getPicUri  "+picUri[i]);
-        return picUri;
-    }*/
-}
+}//MainActivity

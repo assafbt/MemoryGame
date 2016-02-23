@@ -37,24 +37,29 @@ public class DAL {
 
         //set data
         ContentValues values = new ContentValues();;
+        //String DBid = BestTime.TimeEntry._ID;
 
-        int zeroRecord=0;
+        long zeroRecord=0;
+        //db.delete(BestTime.TimeEntry.TABLE_NAME ,null,null);
 
         values.put(BestTime.TimeEntry.FIRST, zeroRecord);
-        Log.e("INIT", "init first " + zeroRecord);
+        Log.i("INIT", "init first " + zeroRecord);
         values.put(BestTime.TimeEntry.SECOND, zeroRecord);
-        Log.e("INIT", "init second " + zeroRecord);
+        Log.i("INIT", "init second " + zeroRecord);
         values.put(BestTime.TimeEntry.THIRD, zeroRecord);
-        Log.e("INIT", "init third " + zeroRecord);
+        Log.i("INIT", "init third " + zeroRecord);
+
 
         //insert database
-        db.insert(BestTime.TimeEntry.TABLE_NAME, null, values);
+        long affectedColumnId = db.insert(BestTime.TimeEntry.TABLE_NAME, null, values);
 
-        Log.e("INIT", "init finish ");
+
+        Log.i("INIT", "init finish ");
         db.close();
-        Log.e("INIT", "after close ");
+        //Log.i("INIT", "1st:"+getFirst()+"  2nd:" +getSecond()+" 3rd:"+getThird());
+        Log.i("INIT", "after close ");
 
-    }
+    }//initRecords
 
     // update the value of record
     public void updateRecord(int time1)  {
@@ -64,25 +69,28 @@ public class DAL {
         boolean is1st,is2nd,is3rd;
 
         is1st= true;
-        is2nd=is3rd=false;
+        is2nd=false;
+        is3rd=false;
 
 
         db = dbHelper.getWritableDatabase();
 
-        if ((is1st)&&((first >= time1) || (first== 0))){
+
+        if ((is1st)&&((first >= time1) || (first<10))){
 
             //set data
             ContentValues values = new ContentValues();
             values.put(BestTime.TimeEntry.FIRST, time1);
             values.put(BestTime.TimeEntry.SECOND, first);
             values.put(BestTime.TimeEntry.THIRD, second);
-/*
-            String where = BestTime.TimeEntry.LVL_CMPX + "=?";
-            String[] whereArgs = {place +""};*/
-            db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
-            Log.e("updateRecord", "record on first place");
+            String DBid = BestTime.TimeEntry._ID;
+            String where = BestTime.TimeEntry._ID + "=?";
+            String[] whereArgs = {DBid +""};
+            db.update(BestTime.TimeEntry.TABLE_NAME, values, where, whereArgs);
 
+            Log.i("updateRecord", "record on first place");
+            return;
         }//if 1st
 
         else{
@@ -90,19 +98,22 @@ public class DAL {
             is2nd=true;
         }//else 1st
 
-        if ((is2nd)&&((second >= time1) || (second== 0))){
+        if ((is2nd)&&((second >= time1) || (second<10))){
 
             //set data
             ContentValues values = new ContentValues();
+            values.put(BestTime.TimeEntry.FIRST, first);
             values.put(BestTime.TimeEntry.SECOND, time1);
             values.put(BestTime.TimeEntry.THIRD, second);
-/*
-        String where = BestTime.TimeEntry.LVL_CMPX + "=?";
-        String[] whereArgs = {place +""};*/
-            db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
-            Log.e("updateRecord", "record on second place");
+            String DBid = BestTime.TimeEntry._ID;
+            String where = BestTime.TimeEntry._ID + "=?";
+            String[] whereArgs = {DBid +""};
+            db.update(BestTime.TimeEntry.TABLE_NAME, values, where, whereArgs);
 
+
+            Log.i("updateRecord", "record on second place");
+            return;
         }//if 2nd
         else {
             is2nd=false;
@@ -110,17 +121,19 @@ public class DAL {
         }//else 2nd
 
 
-        if ((is3rd)&&((third >= time1) || (third== 0))){
+        if ((is3rd)&&((third >= time1) || (third<10))){
             //set data
             ContentValues values = new ContentValues();
+            values.put(BestTime.TimeEntry.FIRST, first);
+            values.put(BestTime.TimeEntry.SECOND, second);
             values.put(BestTime.TimeEntry.THIRD, time1);
                     /*
             String where = BestTime.TimeEntry.LVL_CMPX + "=?";
             String[] whereArgs = {place +""};*/
             db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
-            Log.e("updateRecord", "record on third place");
-
+            Log.i("updateRecord", "record on third place");
+            return;
         }//if 3rd
         else {
                     is3rd= false;
@@ -176,16 +189,25 @@ public class DAL {
         return recordReturn;
     }//getThird
 
+    public void setThird(int third){
+        db = dbHelper.getWritableDatabase();
+
+
+    }
+
+
 
     //Convert To Time  Format
     public String convertToTimeStringFormat(int dbRecord ){
-        int secs,milliseconds;
+        Log.i("convert ", "record= "+dbRecord );
+        int secs=0;
+        int milliseconds=0;
         secs = (int) (dbRecord / 1000);
         secs = secs % 60;
         milliseconds = (int) (dbRecord % 1000);
 
         String dBT = String.format("%02d", secs) + ":" + String.format("%03d", milliseconds);
-        Log.e("convertTime", "convert " + dbRecord);
+        Log.i("convertTime", "convert " + dbRecord);
         return dBT;
 
     }//convertToTimeStringFormat
@@ -203,4 +225,39 @@ public class DAL {
         db.close();
         return true;
     }//isBDEmpty
+
+    public void resetScors(){
+
+            //get db
+            db = dbHelper.getWritableDatabase();
+
+
+            //set data
+            ContentValues values = new ContentValues();;
+
+
+            long zeroRecord=0;
+
+
+            values.put(BestTime.TimeEntry.FIRST, zeroRecord);
+            Log.i("resetScors", "init first " + zeroRecord);
+            values.put(BestTime.TimeEntry.SECOND, zeroRecord);
+            Log.i("resetScors", "init second " + zeroRecord);
+            values.put(BestTime.TimeEntry.THIRD, zeroRecord);
+            Log.i("resetScors", "init third " + zeroRecord);
+
+
+            //update the database
+        String DBid = BestTime.TimeEntry._ID;
+        String where = BestTime.TimeEntry._ID + "=?";
+        String[] whereArgs = {DBid +""};
+        db.update(BestTime.TimeEntry.TABLE_NAME, values, where, whereArgs);
+
+
+            Log.i("reset Scors", " finish ");
+            db.close();
+            //Log.i("INIT", "1st:"+getFirst()+"  2nd:" +getSecond()+" 3rd:"+getThird());
+            Log.i("reset Scors", "after close ");
+
+    }//resetScors
 }

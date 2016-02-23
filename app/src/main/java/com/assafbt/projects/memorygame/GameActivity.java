@@ -67,6 +67,8 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+     //   super.onBackPressed();
+
         prefs = getSharedPreferences("shPref", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
@@ -125,16 +127,16 @@ public class GameActivity extends AppCompatActivity {
             showPictureOnClick();
         //problem with the for
         /*for (int clickCount=1; clickCount<3;clickCount++ ){
-            Log.e("clickCount", "FOR, START " +clickCount+"");
+            Log.i("clickCount", "FOR, START " +clickCount+"");
             if (clickCount==2){
-                Log.e("clickCount", "FOR, IF= TRUE "+clickCount+"");
+                Log.i("clickCount", "FOR, IF= TRUE "+clickCount+"");
                 allFaceDown();
             }
             else {
-                Log.e("clickCount", "FOR, IF= FALSE "+clickCount+"");
+                Log.i("clickCount", "FOR, IF= FALSE "+clickCount+"");
                 clickCount = showPictureOnClick(clickCount);
             }
-            Log.e("clickCount", "FOR, END " +clickCount+"");
+            Log.i("clickCount", "FOR, END " +clickCount+"");
         }*/
 
         rstBtn = (Button)findViewById(R.id.restartBTN);
@@ -142,6 +144,10 @@ public class GameActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                for (int i=0;i<16;i++){
+                    card[i].setFaceUp(false);
+                }
+
                 restart();
                 //v.invalidate();
                 //showPictureOnClick(card, im02);
@@ -152,6 +158,9 @@ public class GameActivity extends AppCompatActivity {
 
 
     }//onCreate
+
+
+
 
     private void showPictureOnClick(){
       //  if (clickCount<2) {
@@ -293,8 +302,14 @@ public class GameActivity extends AppCompatActivity {
                     pairsToGo--;
                     card[i].setFaceUp(true);
                     card[lastInt].setFaceUp(true);
-                    if(pairsToGo==0)
+                    if(pairsToGo==0){
                         stop(this.editor);
+
+                        dalObj.updateRecord((int) updatedTime);
+
+
+                    }
+
             } else{
 
                     Runnable r = new Runnable() {
@@ -357,19 +372,19 @@ public class GameActivity extends AppCompatActivity {
         //2nd row
         if(!card[4].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-                .placeholder(R.drawable.ic_launcher) // optional
+                //.placeholder(R.drawable.ic_launcher) // optional
                 .into(im10);
         if(!card[5].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-                .placeholder(R.drawable.ic_launcher) // optional
+               // .placeholder(R.drawable.ic_launcher) // optional
                 .into(im11);
         if(!card[6].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-                .placeholder(R.drawable.ic_launcher) // optional
+               // .placeholder(R.drawable.ic_launcher) // optional
                 .into(im12);
         if(!card[7].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-                .placeholder(R.drawable.ic_launcher) // optional
+              //  .placeholder(R.drawable.ic_launcher) // optional
                 .into(im13);
 
         //3rd row
@@ -408,7 +423,7 @@ public class GameActivity extends AppCompatActivity {
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im33);
 
-        Log.e("## Face Down ##", " ALL ");
+        Log.i("## Face Down ##", " ALL ");
 
         /*
         for (i=0;i<4;i++) {
@@ -444,7 +459,7 @@ public class GameActivity extends AppCompatActivity {
 
     private void start(){
         if (!isRunning) {
-            Log.e("Context", "let the game begin");
+            Log.i("Context", "let the game begin");
             isRunning = true;
         //    view.invalidate();
             startTime = SystemClock.uptimeMillis();
