@@ -32,7 +32,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class MainActivity extends Activity {
-    Button start, select, reset;
+    Button start, select, reset1,reset2;
     private static int RESULT_LOAD_IMG = 8;
     String imgDecodableString;
   //  public String picUri[] = new String[8];
@@ -67,8 +67,8 @@ public class MainActivity extends Activity {
 
         Log.e("was","outside if");
         Log.e("dalObj.getFirst2", dalObj.getFirst()+"");
-        Log.e("dalObj.getSecond2", dalObj.getSecond()+"");
-        Log.e("dalObj.getThird2", dalObj.getThird()+"");
+        Log.e("dalObj.getSecond2", dalObj.getSecond() + "");
+        Log.e("dalObj.getThird2", dalObj.getThird() + "");
 
 
             best1v.setText(dalObj.convertToTimeStringFormat(dalObj.getFirst()));
@@ -106,18 +106,9 @@ public class MainActivity extends Activity {
             }
         });
 
-        Button btn1 = (Button) findViewById(R.id.button1);
-        btn1.setOnClickListener(new View.OnClickListener() {
 
-                                    @Override
-                                    public void onClick(View v) {
-                                            onResume();
-                                        Log.i("btn1", "onResume");
-                                    }
-        });
-
-                reset = (Button) findViewById(R.id.resetBTN);
-        reset.setOnClickListener(new View.OnClickListener() {
+        reset1 = (Button) findViewById(R.id.resetBTN);
+        reset1.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -127,10 +118,11 @@ public class MainActivity extends Activity {
                 }else {
                     dalObj.resetScors();
                 }
+                Log.i("reset1", "onResume");
+                onResume();
 
             }
         });
-
 
 
     }//onCreate

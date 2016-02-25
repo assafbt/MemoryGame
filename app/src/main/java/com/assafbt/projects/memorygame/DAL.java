@@ -306,10 +306,7 @@ public class DAL {
 
 
             //update the database
-        String DBid = BestTime.TimeEntry._ID;
-        String where = BestTime.TimeEntry._ID + "=?";
-        String[] whereArgs = {DBid +""};
-        db.update(BestTime.TimeEntry.TABLE_NAME, values, where, whereArgs);
+        db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
 
             Log.i("reset Scors", " finish ");
