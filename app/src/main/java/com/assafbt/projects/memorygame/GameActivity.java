@@ -30,7 +30,6 @@ public class GameActivity extends AppCompatActivity {
     int lastInt;
     int pairsToGo = 8;
     int itemPerRow = 4;
-   // MainActivity ma = new MainActivity();
     Card card[] = new Card[16];
     String imagUri[][]= new String[8][2];
 
@@ -38,7 +37,7 @@ public class GameActivity extends AppCompatActivity {
                 im10,im11,im12,im13,
                 im20, im21, im22, im23,
                 im30, im31, im32, im33;
-    //ImageView im0[], im1[], im2[], im3[]; //X16
+
     TextView correctTime;
     Button rstBtn;
 
@@ -67,13 +66,10 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-     //   super.onBackPressed();
-
         prefs = getSharedPreferences("shPref", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
         // init the face down card
-       // String[] tmp = ma.getPicUri();
         for(int i =0; i<8;i++) {
             imagUri[i][0] = new String();
             imagUri[i][0]=prefs.getString("pic_" + i, null);
@@ -83,15 +79,6 @@ public class GameActivity extends AppCompatActivity {
 
         correctTime = (TextView) findViewById(R.id.scoreView);
         start();
-
-
-
-
-        /*
-        //here we should choose 8 pictures from the gallery and then enter their addresses into pisSet
-        for(int i =0; i<8;i++) {
-            card[i].setImgUp("http://openweathermap.org/img/w/10d.png");
-        }*/
 
         //X16
         //1st row
@@ -122,22 +109,7 @@ public class GameActivity extends AppCompatActivity {
         newOrder();
         allFaceDown();
 
-
-       // while(pairsToGo!=0)
-            showPictureOnClick();
-        //problem with the for
-        /*for (int clickCount=1; clickCount<3;clickCount++ ){
-            Log.i("clickCount", "FOR, START " +clickCount+"");
-            if (clickCount==2){
-                Log.i("clickCount", "FOR, IF= TRUE "+clickCount+"");
-                allFaceDown();
-            }
-            else {
-                Log.i("clickCount", "FOR, IF= FALSE "+clickCount+"");
-                clickCount = showPictureOnClick(clickCount);
-            }
-            Log.i("clickCount", "FOR, END " +clickCount+"");
-        }*/
+        showPictureOnClick();
 
         rstBtn = (Button)findViewById(R.id.restartBTN);
         rstBtn.setOnClickListener(new View.OnClickListener() {
@@ -149,9 +121,6 @@ public class GameActivity extends AppCompatActivity {
                 }
 
                 restart();
-                //v.invalidate();
-                //showPictureOnClick(card, im02);
-
             }
         });
 
@@ -163,7 +132,7 @@ public class GameActivity extends AppCompatActivity {
 
 
     private void showPictureOnClick(){
-      //  if (clickCount<2) {
+
             //1st row
             im00.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -282,8 +251,7 @@ public class GameActivity extends AppCompatActivity {
                 }
             });
 
-       // }//if
-      //  return clickCount;
+
     }//showPictureOnClick
 
     private void showPicture(int i, ImageView iv){
@@ -375,19 +343,19 @@ public class GameActivity extends AppCompatActivity {
         //2nd row
         if(!card[4].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-                //.placeholder(R.drawable.ic_launcher) // optional
+                .placeholder(R.drawable.ic_launcher) // optional
                 .into(im10);
         if(!card[5].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-               // .placeholder(R.drawable.ic_launcher) // optional
+                .placeholder(R.drawable.ic_launcher) // optional
                 .into(im11);
         if(!card[6].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-               // .placeholder(R.drawable.ic_launcher) // optional
+                .placeholder(R.drawable.ic_launcher) // optional
                 .into(im12);
         if(!card[7].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
-              //  .placeholder(R.drawable.ic_launcher) // optional
+                .placeholder(R.drawable.ic_launcher) // optional
                 .into(im13);
 
         //3rd row
@@ -428,29 +396,6 @@ public class GameActivity extends AppCompatActivity {
 
         Log.i("## Face Down ##", " ALL ");
 
-        /*
-        for (i=0;i<4;i++) {
-            Picasso.with(getApplicationContext()).load(picStock[i].getImgDown())
-                    .placeholder(R.drawable.ic_launcher) // optional
-                    .into(iv0[i]);
-
-
-            Picasso.with(getApplicationContext()).load(picStock[i].getImgDown())
-                    .placeholder(R.drawable.ic_launcher) // optional
-                    .into(iv1[i]);
-
-
-            Picasso.with(getApplicationContext()).load(picStock[i].getImgDown())
-                    .placeholder(R.drawable.ic_launcher) // optional
-                    .into(iv2[i]);
-
-
-
-            Picasso.with(getApplicationContext()).load(picStock[i].getImgDown())
-                    .placeholder(R.drawable.ic_launcher) // optional
-                    .into(iv3[i]);
-        }
-*/
     }//allFaceDown
 
     private void restart(){
@@ -482,16 +427,6 @@ public class GameActivity extends AppCompatActivity {
         customHandler.removeCallbacks(updateTimerThread);
         if (isRunning) {//running
             isRunning = false;
-/*
-            bestTime = dalObj.getRecord(lvl_cmpx);
-            int bestTimeValue = (int)updatedTime;
-            if ((bestTime == 0) || (bestTime > bestTimeValue)) { //check the best
-                dalObj.updateRecord(lvl_cmpx, bestTimeValue);
-
-                Toast.makeText(getApplicationContext(), "new record !", Toast.LENGTH_SHORT).show();
-                bestResultShowTime.setText(dalObj.convertToTimeStringFormat(bestTimeValue));
-
-            }*/
         }
     }//stop
 

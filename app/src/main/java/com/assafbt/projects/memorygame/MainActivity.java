@@ -35,7 +35,6 @@ public class MainActivity extends Activity {
     Button start, select, reset1,reset2;
     private static int RESULT_LOAD_IMG = 8;
     String imgDecodableString;
-  //  public String picUri[] = new String[8];
     int step = 0;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
@@ -97,12 +96,6 @@ public class MainActivity extends Activity {
 
                 loadImagefromGallery(v);
                 Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-                /*
-                for (int i=0;i<8;i++) {
-                    loadImagefromGallery(v);
-                    Toast.makeText(getApplicationContext(), "picture number "+i+" from 8 was loaded", Toast.LENGTH_SHORT).show();
-                }
-*/
             }
         });
 
@@ -134,26 +127,18 @@ public class MainActivity extends Activity {
         super.onResume();
         this.onCreate(null);
         Log.i("onResume", "end");
-/*
-
-        Intent intent = new Intent(MainActivity.this, MainActivity.class);
-        startActivityForResult(intent,1 );
-
-*/
-
 
     }//onResume
 
     public void loadImagefromGallery(View view) {
 
             // Create intent to Open Image applications like Gallery, Google Photos
+            Intent galleryIntent = new Intent(Intent.ACTION_PICK,
+                    android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
-        Intent galleryIntent = new Intent(Intent.ACTION_PICK,
-                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             // Start the Intent
-
             startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
-           // Toast.makeText(this, "picture number "+i+" from 8 was loaded", Toast.LENGTH_SHORT).show();
+
 
 
     }//loadImagefromGallery
@@ -164,6 +149,7 @@ public class MainActivity extends Activity {
         try {
             if (requestCode == RESULT_LOAD_IMG && resultCode == RESULT_OK
                     && null != data) {
+
                 // Get the Image from data
                 Uri selectedImage = data.getData();
 

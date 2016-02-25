@@ -40,7 +40,6 @@ public class DAL {
         //String DBid = BestTime.TimeEntry._ID;
 
         long zeroRecord=0;
-        //db.delete(BestTime.TimeEntry.TABLE_NAME ,null,null);
 
         values.put(BestTime.TimeEntry.FIRST, zeroRecord);
         Log.i("INIT", "init first " + zeroRecord);
@@ -56,7 +55,6 @@ public class DAL {
 
         Log.i("INIT", "init finish ");
         db.close();
-        //Log.i("INIT", "1st:"+getFirst()+"  2nd:" +getSecond()+" 3rd:"+getThird());
         Log.i("INIT", "after close ");
 
     }//initRecords
@@ -85,12 +83,7 @@ public class DAL {
             values.put(BestTime.TimeEntry.FIRST, time1);
             values.put(BestTime.TimeEntry.SECOND, first);
             values.put(BestTime.TimeEntry.THIRD, second);
-/*
-            String DBid = BestTime.TimeEntry._ID;
-            String where = BestTime.TimeEntry._ID + "=?";
-            String[] whereArgs = {DBid +""};
 
-            */
             db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
             Log.i("updateRecord", "record on first place");
@@ -109,13 +102,8 @@ public class DAL {
             values.put(BestTime.TimeEntry.FIRST, first);
             values.put(BestTime.TimeEntry.SECOND, time1);
             values.put(BestTime.TimeEntry.THIRD, second);
-/*
-            String DBid = BestTime.TimeEntry._ID;
-            String where = BestTime.TimeEntry._ID + "=?";
-            String[] whereArgs = {DBid +""};
-            */
-            db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
+            db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
             Log.i("updateRecord", "record on second place");
             return;
@@ -133,9 +121,7 @@ public class DAL {
             values.put(BestTime.TimeEntry.FIRST, first);
             values.put(BestTime.TimeEntry.SECOND, second);
             values.put(BestTime.TimeEntry.THIRD, time1);
-                    /*
-            String where = BestTime.TimeEntry.LVL_CMPX + "=?";
-            String[] whereArgs = {place +""};*/
+
             db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
 
             Log.i("updateRecord", "record on third place");
@@ -167,11 +153,7 @@ public class DAL {
         values.put(BestTime.TimeEntry.FIRST, time1);
         values.put(BestTime.TimeEntry.SECOND, first);
         values.put(BestTime.TimeEntry.THIRD, second);
-/*
-        String DBid = BestTime.TimeEntry._ID;
-        String where = BestTime.TimeEntry._ID + "=?";
-        String[] whereArgs = {DBid +""};
-        */
+
         db.update(BestTime.TimeEntry.TABLE_NAME, values, null, null);
         db.close();
         Log.i("updateRecord1", "record on first place");
@@ -247,13 +229,6 @@ public class DAL {
         return recordReturn;
     }//getThird
 
-    public void setThird(long third){
-        db = dbHelper.getWritableDatabase();
-
-
-    }
-
-
 
     //Convert To Time  Format
     public String convertToTimeStringFormat(long dbRecord ){
@@ -293,9 +268,7 @@ public class DAL {
             //set data
             ContentValues values = new ContentValues();;
 
-
             long zeroRecord=0;
-
 
             values.put(BestTime.TimeEntry.FIRST, zeroRecord);
             Log.i("resetScors", "init first " + zeroRecord);
@@ -311,7 +284,7 @@ public class DAL {
 
             Log.i("reset Scors", " finish ");
             db.close();
-            //Log.i("INIT", "1st:"+getFirst()+"  2nd:" +getSecond()+" 3rd:"+getThird());
+
             Log.i("reset Scors", "after close ");
 
     }//resetScors
