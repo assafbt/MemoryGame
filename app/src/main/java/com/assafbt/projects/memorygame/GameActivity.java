@@ -305,7 +305,10 @@ public class GameActivity extends AppCompatActivity {
                     if(pairsToGo==0){
                         stop(this.editor);
 
-                        dalObj.updateRecord((int) updatedTime);
+                       // dalObj.updateRecordShort(updatedTime);
+                        Log.e("updateRecordShort", dalObj.getFirst() + "");
+                        dalObj.updateRecord( updatedTime);
+                        Log.e("updateRecord",dalObj.getFirst()+"");
 
 
                     }
@@ -329,12 +332,12 @@ public class GameActivity extends AppCompatActivity {
     }//showPicture
 
     private void newOrder(){
-     //   System.out.println("### enter new order");
+        System.out.println("### enter new order");
         Random r = new Random();
         int num;
         for(int i =0; i<16;i++)
             while(true) {
-              //  System.out.println("###  new orders i "+i);
+                System.out.println("###  new orders i "+i);
 
                 num = r.nextInt(8);
 
@@ -476,7 +479,6 @@ public class GameActivity extends AppCompatActivity {
 
     // stop the clock
     public void stop(SharedPreferences.Editor editor){
-        System.out.println("### stop");
         customHandler.removeCallbacks(updateTimerThread);
         if (isRunning) {//running
             isRunning = false;
@@ -494,19 +496,18 @@ public class GameActivity extends AppCompatActivity {
     }//stop
 
     // time running
-
     private Runnable updateTimerThread = new Runnable() {
 
         public void run() {
-            System.out.println("### runnable");
+
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;
             secs = (int) (updatedTime / 1000);
             secs = secs % 60;
             milliseconds = (int) (updatedTime % 1000);
             correctTime.setText(String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
-            customHandler.postDelayed(this, 0);
 
+            customHandler.postDelayed(this, 0);
 
         }//run
 

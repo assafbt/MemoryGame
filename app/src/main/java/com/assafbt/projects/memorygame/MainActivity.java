@@ -19,6 +19,7 @@ import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -58,12 +59,21 @@ public class MainActivity extends Activity {
 
         if (dalObj.isBDEmpty()){
             dalObj.initRecords();
+            Log.e("was","inside if");
+            Log.e("dalObj.getFirst1", dalObj.getFirst()+"");
+            Log.e("dalObj.getSecond1", dalObj.getSecond()+"");
+            Log.e("dalObj.getThird1", dalObj.getThird()+"");
         }
 
-       // System.out.println("### here");
-            best1v.setText(dalObj.convertToTimeStringFormat(dalObj.getRecord(0)));
-            best2v.setText(dalObj.convertToTimeStringFormat(dalObj.getRecord(1)));
-            best3v.setText(dalObj.convertToTimeStringFormat(dalObj.getRecord(2)));
+        Log.e("was","outside if");
+        Log.e("dalObj.getFirst2", dalObj.getFirst()+"");
+        Log.e("dalObj.getSecond2", dalObj.getSecond()+"");
+        Log.e("dalObj.getThird2", dalObj.getThird()+"");
+
+
+            best1v.setText(dalObj.convertToTimeStringFormat(dalObj.getFirst()));
+            best2v.setText(dalObj.convertToTimeStringFormat(dalObj.getSecond()));
+            best3v.setText(dalObj.convertToTimeStringFormat(dalObj.getThird()));
 
 
 
@@ -86,7 +96,7 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
 
                 loadImagefromGallery(v);
-                Toast.makeText(getApplicationContext(), "one picture was loaded", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
                 /*
                 for (int i=0;i<8;i++) {
                     loadImagefromGallery(v);
@@ -96,8 +106,17 @@ public class MainActivity extends Activity {
             }
         });
 
+        Button btn1 = (Button) findViewById(R.id.button1);
+        btn1.setOnClickListener(new View.OnClickListener() {
 
-        reset = (Button) findViewById(R.id.resetBTN);
+                                    @Override
+                                    public void onClick(View v) {
+                                            onResume();
+                                        Log.i("btn1", "onResume");
+                                    }
+        });
+
+                reset = (Button) findViewById(R.id.resetBTN);
         reset.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -109,10 +128,6 @@ public class MainActivity extends Activity {
                     dalObj.resetScors();
                 }
 
-                Intent intent = getIntent();
-                finish();
-                startActivity(intent);
-
             }
         });
 
@@ -123,8 +138,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onResume() {
 
+        Log.i("onResume", "start");
         super.onResume();
         this.onCreate(null);
+        Log.i("onResume", "end");
 /*
 
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
