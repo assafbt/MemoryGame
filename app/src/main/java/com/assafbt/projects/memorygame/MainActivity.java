@@ -60,9 +60,10 @@ public class MainActivity extends Activity {
             dalObj.initRecords();
         }
 
-            best1v.setText(dalObj.convertToTimeStringFormat(dalObj.getFirst()));
-            best2v.setText(dalObj.convertToTimeStringFormat(dalObj.getSecond()));
-            best3v.setText(dalObj.convertToTimeStringFormat(dalObj.getThird()));
+       // System.out.println("### here");
+            best1v.setText(dalObj.convertToTimeStringFormat(dalObj.getRecord(0)));
+            best2v.setText(dalObj.convertToTimeStringFormat(dalObj.getRecord(1)));
+            best3v.setText(dalObj.convertToTimeStringFormat(dalObj.getRecord(2)));
 
 
 
@@ -107,6 +108,10 @@ public class MainActivity extends Activity {
                 }else {
                     dalObj.resetScors();
                 }
+
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
 
             }
         });
