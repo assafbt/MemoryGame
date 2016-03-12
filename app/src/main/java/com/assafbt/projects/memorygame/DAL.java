@@ -232,14 +232,15 @@ public class DAL {
 
     //Convert To Time  Format
     public String convertToTimeStringFormat(long dbRecord ){
-        Log.i("convert ", "record= "+dbRecord );
-        int secs=0;
-        int milliseconds=0;
-        secs = (int) (dbRecord / 1000);
+        Log.i("convert ", "record= " + dbRecord);
+        int secs = (int) (dbRecord / 1000);
+        int mins = secs / 60;
         secs = secs % 60;
-        milliseconds = (int) (dbRecord % 1000);
+        int milliseconds = (int) (dbRecord % 1000);
 
-        String dBT = String.format("%02d", secs) + ":" + String.format("%03d", milliseconds);
+       // setText(" " + mins + ":" + String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
+
+        String dBT = " " + mins + ":" + String.format("%02d", secs) + ":" + String.format("%03d", milliseconds);
         Log.i("convertTime", "convert " + dbRecord);
         return dBT;
 

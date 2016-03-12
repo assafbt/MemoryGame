@@ -55,6 +55,7 @@ public class GameActivity extends AppCompatActivity {
     long timeSwapBuff = 0L;
     long updatedTime = 0L;
     int secs=0;
+    int mins=0;
     int milliseconds=0;
     DAL dalObj = new DAL(this);
     SharedPreferences prefs;
@@ -474,9 +475,10 @@ public class GameActivity extends AppCompatActivity {
             timeInMilliseconds = SystemClock.uptimeMillis() - startTime;
             updatedTime = timeSwapBuff + timeInMilliseconds;
             secs = (int) (updatedTime / 1000);
+            mins = secs / 60;
             secs = secs % 60;
             milliseconds = (int) (updatedTime % 1000);
-            correctTime.setText(String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
+            correctTime.setText(" " + mins + ":" + String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
 
             customHandler.postDelayed(this, 0);
 
