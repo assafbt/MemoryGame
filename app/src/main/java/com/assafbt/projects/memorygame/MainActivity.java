@@ -8,28 +8,16 @@ package com.assafbt.projects.memorygame;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.provider.MediaStore;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.SortedSet;
-import java.util.TreeSet;
 
 public class MainActivity extends Activity {
     Button start, select, reset1,reset2;
@@ -40,7 +28,7 @@ public class MainActivity extends Activity {
     SharedPreferences.Editor editor;
     DAL dalObj = new DAL(this);
     SQLiteDatabase db;
-    DBHelper dbHelper;
+    BestTime_DBHelper bestTimeDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

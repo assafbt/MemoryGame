@@ -21,4 +21,5 @@ public class BestTime {
         public static final String THIRD = "third_record";
 
     }
+
 }

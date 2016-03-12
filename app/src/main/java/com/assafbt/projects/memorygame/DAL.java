@@ -18,14 +18,16 @@ import android.util.Log;
 
 public class DAL {
     SQLiteDatabase db;
-    DBHelper dbHelper;
+    BestTime_DBHelper bestTimeDbHelper;
+    Images_DBHelper imageDbHelper;
     Cursor crs;
 
 
 
 
     public DAL(Context c){
-        dbHelper = new DBHelper(c);
+        bestTimeDbHelper = new BestTime_DBHelper(c);
+//        imageDbHelper = new Images_DBHelper(c);
 
 
     }//DAL
@@ -33,7 +35,7 @@ public class DAL {
     // first init
     public void initRecords(){
         //get db
-        db = dbHelper.getWritableDatabase();
+        db = bestTimeDbHelper.getWritableDatabase();
 
         //set data
         ContentValues values = new ContentValues();;
@@ -71,7 +73,7 @@ public class DAL {
         is3rd=false;
 
 
-        db = dbHelper.getWritableDatabase();
+        db = bestTimeDbHelper.getWritableDatabase();
 
 
         if ((is1st)&&((first >= time1) || (first<10))){
@@ -147,7 +149,7 @@ public class DAL {
         is3rd = false;
 
 
-        db = dbHelper.getWritableDatabase();
+        db = bestTimeDbHelper.getWritableDatabase();
 
         ContentValues values = new ContentValues();
         values.put(BestTime.TimeEntry.FIRST, time1);
@@ -166,7 +168,7 @@ public class DAL {
 
         // get the First Best Record value
     public long getFirst(){
-        db = dbHelper.getReadableDatabase();
+        db = bestTimeDbHelper.getReadableDatabase();
 
         int recordReturn=0;
         int firstIndex;
@@ -192,7 +194,7 @@ public class DAL {
 
     // get the Second  Best Record value
     public long getSecond(){
-        db = dbHelper.getReadableDatabase();
+        db = bestTimeDbHelper.getReadableDatabase();
         int recordReturn=0
                 ,col;
         String table = BestTime.TimeEntry.TABLE_NAME;
@@ -212,7 +214,7 @@ public class DAL {
 
     // get the Third  Best Record value
     public long getThird(){
-        db = dbHelper.getReadableDatabase();
+        db = bestTimeDbHelper.getReadableDatabase();
         int recordReturn=0
                 ,col;
         String table = BestTime.TimeEntry.TABLE_NAME;
@@ -230,16 +232,13 @@ public class DAL {
     }//getThird
 
 
-    //Convert To Time  Format
+    //Convert To Time Format
     public String convertToTimeStringFormat(long dbRecord ){
         Log.i("convert ", "record= " + dbRecord);
         int secs = (int) (dbRecord / 1000);
         int mins = secs / 60;
         secs = secs % 60;
         int milliseconds = (int) (dbRecord % 1000);
-
-       // setText(" " + mins + ":" + String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
-
         String dBT = " " + mins + ":" + String.format("%02d", secs) + ":" + String.format("%03d", milliseconds);
         Log.i("convertTime", "convert " + dbRecord);
         return dBT;
@@ -250,7 +249,7 @@ public class DAL {
     // check if the DB is empty
     public boolean isBDEmpty() {
         //get db
-        db = dbHelper.getReadableDatabase();
+        db = bestTimeDbHelper.getReadableDatabase();
         crs = db.rawQuery("SELECT * FROM " + BestTime.TimeEntry.TABLE_NAME, null);
         if (crs.getCount() > 0) {
             db.close();
@@ -263,7 +262,7 @@ public class DAL {
     public void resetScors(){
 
             //get db
-            db = dbHelper.getWritableDatabase();
+            db = bestTimeDbHelper.getWritableDatabase();
 
 
             //set data
@@ -289,4 +288,20 @@ public class DAL {
             Log.i("reset Scors", "after close ");
 
     }//resetScors
-}
+
+    //first init images
+    public void initImages(){
+        //get db
+        db = imageDbHelper.getWritableDatabase();
+
+        //set data
+        ContentValues values = new ContentValues();;
+
+        for(int i=0;i<8;i++){
+
+
+        }
+
+    }
+
+}//DAL
