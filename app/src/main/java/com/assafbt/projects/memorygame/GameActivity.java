@@ -30,6 +30,7 @@ public class GameActivity extends AppCompatActivity {
     int lastInt;
     int pairsToGo = 8;
     int itemPerRow = 4;
+    int countFaceUp;
     Card card[] = new Card[16];
     String imagUri[][]= new String[8][2];
 
@@ -137,27 +138,38 @@ public class GameActivity extends AppCompatActivity {
             im00.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(0, im00);
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(0, im00);
+                    }
                 }
             });
             im01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(1, im01);
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(1, im01);
+                    }
+
                 }
             });
             im02.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(2, im02);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(2, im02);
+                    }
                 }
             });
             im03.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(3, im03);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(3, im03);
+                    }
                 }
             });
 
@@ -165,29 +177,37 @@ public class GameActivity extends AppCompatActivity {
             im10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(4, im10);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(4, im10);
+                    }
                 }
             });
             im11.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(5, im11);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(5, im11);
+                    }
                 }
             });
             im12.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(6, im12);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(6, im12);
+                    }
                 }
             });
             im13.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(7, im13);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(7, im13);
+                    }
                 }
             });
 
@@ -195,29 +215,37 @@ public class GameActivity extends AppCompatActivity {
             im20.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(8, im20);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(8, im20);
+                    }
                 }
             });
             im21.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(9, im21);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(9, im21);
+                    }
                 }
             });
             im22.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(10, im22);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(10, im22);
+                    }
                 }
             });
             im23.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(11, im23);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(11, im23);
+                    }
                 }
             });
 
@@ -225,29 +253,37 @@ public class GameActivity extends AppCompatActivity {
             im30.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(12, im30);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(12, im30);
+                    }
                 }
             });
             im31.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(13, im31);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(13, im31);
+                    }
                 }
             });
             im32.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(14, im32);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(14, im32);
+                    }
                 }
             });
             im33.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    showPicture(15, im33);
-
+                    if (countFaceUp<2) {
+                        countFaceUp++;
+                        showPicture(15, im33);
+                    }
                 }
             });
 
@@ -260,43 +296,43 @@ public class GameActivity extends AppCompatActivity {
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(iv);
 
-        if(!openCard){
-            last =card[i].getImgUp();
-            lastInt=i;
-            openCard=true;
-        }else{
-            openCard=false;
-                if(card[i].getImgUp().equals(last)) {
+            if ((!openCard)) {
+                last = card[i].getImgUp();
+                lastInt = i;
+                openCard = true;
+            } else {
+                openCard = false;
+                if (card[i].getImgUp().equals(last)) {
                     pairsToGo--;
+                    countFaceUp=0;
                     card[i].setFaceUp(true);
                     card[lastInt].setFaceUp(true);
-                    if(pairsToGo==0){
+                    if (pairsToGo == 0) {
                         stop(this.editor);
 
-                       // dalObj.updateRecordShort(updatedTime);
+                        // dalObj.updateRecordShort(updatedTime);
                         Log.e("updateRecordShort", dalObj.getFirst() + "");
-                        dalObj.updateRecord( updatedTime);
-                        Log.e("updateRecord",dalObj.getFirst()+"");
+                        dalObj.updateRecord(updatedTime);
+                        Log.e("updateRecord", dalObj.getFirst() + "");
 
 
                     }
 
-            } else{
+                } else {
 
                     Runnable r = new Runnable() {
                         @Override
-                        public void run(){
+                        public void run() {
+                            //countFaceUp=0;
                             allFaceDown();
                         }
                     };
 
                     Handler h = new Handler();
                     h.postDelayed(r, 1000); // <-- the "1000" is the delay time in miliseconds
+                }
+
             }
-
-        }
-
-
     }//showPicture
 
     private void newOrder(){
@@ -321,7 +357,7 @@ public class GameActivity extends AppCompatActivity {
     }//newOrder
 
     private void allFaceDown(){
-
+        countFaceUp=0;
         //1st row
         if(!card[0].getFaceUp())
         Picasso.with(getApplicationContext()).load(R.drawable.images)
