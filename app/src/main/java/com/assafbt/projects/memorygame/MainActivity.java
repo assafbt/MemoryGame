@@ -82,8 +82,12 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
+                startActivity(new Intent(getApplicationContext(), SelectingImages.class));
+                startActivity(getIntent());
+
+/*
                 loadImagefromGallery(v);
-                Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();*/
             }
         });
 
