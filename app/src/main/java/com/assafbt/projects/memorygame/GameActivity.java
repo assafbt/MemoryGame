@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.squareup.picasso.Picasso;
 
 import java.util.Random;
+import java.io.File;
 
 
 public class GameActivity extends AppCompatActivity {
@@ -60,8 +61,16 @@ public class GameActivity extends AppCompatActivity {
     DAL dalObj = new DAL(this);
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-
-
+    int drawable_images[]= new int[]{
+        R.drawable.img01,
+        R.drawable.img02,
+        R.drawable.img03,
+        R.drawable.img04,
+        R.drawable.img05,
+        R.drawable.img06,
+        R.drawable.img07,
+        R.drawable.img08
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,11 +83,21 @@ public class GameActivity extends AppCompatActivity {
         // init the face down card
         for(int i =0; i<8;i++) {
             imagUri[i][0] = new String();
-            imagUri[i][0]=prefs.getString("pic_" + i, null);
-            imagUri[i][1]="0";
+            imagUri[i][0] = prefs.getString("pic_" + i, null);
+            imagUri[i][1] = "0";
 
-        }
+            // !!! use this line only once to clear all image selections
+            // !!! need to add button to clear all images from shPref
+            // imagUri[i][0] = null;
 
+            // if no image - use default images from drawable resources
+            if (imagUri[i][0] == null) {
+                editor.putString("pic_" + i, drawable_images[i] + "");
+                editor.commit();
+                imagUri[i][0] = prefs.getString("pic_" + i, null);
+                imagUri[i][1] = "0";
+            }
+         }
         correctTime = (TextView) findViewById(R.id.scoreView);
         start();
 
@@ -291,18 +310,42 @@ public class GameActivity extends AppCompatActivity {
 
     }//showPictureOnClick
 
+
+
     private void showPicture(int i, ImageView iv){
 
-        Picasso.with(getApplicationContext()).load(card[i].getImgUp())
-                .placeholder(R.drawable.ic_launcher) // optional
-                .into(iv);
+        if (card[i].getImgUp().length() < 16) { /* need to find better way to identify drawable image uri, temporary check the length, the resouce id is short length */
+            Picasso.with(getApplicationContext()).load(Integer.parseInt(card[i].getImgUp()))
+                    .placeholder(R.drawable.ic_launcher) // optional
+                    .fit().centerInside().into(iv);
+        }
+        else {
+
+
+             File image_file = new File("file://" + card[i].getImgUp());
+
+            //load("file://" + file.getAbsolutePath())
+            //load(Uri.fromFile(file))
+
+
+            //String load_image =
+            Picasso.with(this).load("file://" + card[i].getImgUp()) /* this is gallery image path not uri */
+                    .placeholder(R.drawable.ic_launcher) // optional
+                    .fit().centerInside().into(iv);
+
+            //ImageView imageView = (ImageView) findViewById(R.id.img32);
+            //imageView.setImageBitmap(BitmapFactory.decodeFile(card[i].getImgUp()));
+
+        }
 
             if ((!openCard)) {
                 last = card[i].getImgUp();
+                Log.i("if true", last+"");
                 lastInt = i;
                 openCard = true;
             } else {
                 openCard = false;
+                Log.i("card[i]",card[i].getImgUp() );
                 if (card[i].getImgUp().equals(last)) {
                     pairsToGo--;
                     countFaceUp=0;
@@ -336,7 +379,7 @@ public class GameActivity extends AppCompatActivity {
             }
     }//showPicture
 
-    private void newOrder(){
+   private void newOrder(){
         System.out.println("### enter new order");
         Random r = new Random();
         int num;

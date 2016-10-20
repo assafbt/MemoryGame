@@ -31,7 +31,7 @@
         android:id="@+id/selectBTN"
         android:layout_below="@+id/startBTN"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
         android:layout_alignParentStart="false"
         android:layout_alignParentLeft="false" />
 
@@ -41,10 +41,24 @@
         android:text="Reset Scores"
         android:id="@+id/resetBTN"
         android:layout_centerVertical="true"
+        android:layout_below="@+id/resetIMG"
+        android:layout_marginTop="30dp"
         android:layout_alignRight="@+id/selectBTN"
         android:layout_alignEnd="@+id/selectBTN"
         android:layout_alignLeft="@+id/selectBTN"
         android:layout_alignStart="@+id/selectBTN" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset images"
+        android:id="@+id/resetIMG"
+        android:layout_below="@+id/selectBTN"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="30dp"
+        android:layout_alignRight="@+id/resetBTN"
+        android:layout_alignEnd="@+id/resetBTN"
+        android:layout_alignLeft="@+id/resetBTN"
+        android:layout_alignStart="@+id/resetBTN" />
 
     <TextView
         android:layout_width="wrap_content"

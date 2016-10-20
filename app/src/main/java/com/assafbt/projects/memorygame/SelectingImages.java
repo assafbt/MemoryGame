@@ -17,6 +17,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import android.database.Cursor;
+import android.provider.MediaStore;
+
+
 public class SelectingImages extends AppCompatActivity {
     private static int RESULT_LOAD_IMG = 8;
     int step = 0;
@@ -136,6 +140,7 @@ public class SelectingImages extends AppCompatActivity {
         Intent galleryIntent = new Intent(Intent.ACTION_PICK,
                 android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
 
+        step = place;
         // Start the Intent
         startActivityForResult(galleryIntent, RESULT_LOAD_IMG);
 
@@ -144,7 +149,27 @@ public class SelectingImages extends AppCompatActivity {
     }//loadImagefromGallery
 
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data, int place) {
+    //Convert the image URI to the direct file system path of the image file
+    public String getRealPathFromURI(Uri contentUri) {
+
+        Cursor cursor = null;
+        try {
+
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = getContentResolver().query(contentUri,  proj, null, null, null);
+            cursor.moveToFirst();
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            return cursor.getString(column_index);
+        } finally {
+
+            if (cursor != null) {
+
+                cursor.close();
+            }
+        }
+    }//getRealPathFromURI
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         try {
             Log.i("onActivityResult ","try");
@@ -153,11 +178,15 @@ public class SelectingImages extends AppCompatActivity {
                 Log.i("onActivityResult ","if");
                 // Get the Image from data
                 Uri selectedImage = data.getData();
+
                 Log.i("onActivityResult ","uri= " + selectedImage);
-                step= place;
+                Log.i("onActivityResult ","uri= " + getRealPathFromURI(selectedImage));
+                //step= place;
 
 
-                editor.putString("pic_" + step, selectedImage + "");
+                editor.putString("pic_" + step, getRealPathFromURI(selectedImage) + "");
+//                editor.putString("pic_" + step, selectedImage + "");
+
                 Log.i("onActivityResult ", "putString, step: "+step);
                 editor.commit();
                 Log.i("onActivityResult ", "commit");

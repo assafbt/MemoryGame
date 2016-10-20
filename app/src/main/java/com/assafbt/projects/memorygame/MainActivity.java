@@ -10,9 +10,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,6 +31,18 @@ public class MainActivity extends Activity {
     DAL dalObj = new DAL(this);
     SQLiteDatabase db;
     BestTime_DBHelper bestTimeDbHelper;
+    String imagUri[][]= new String[8][2];
+    int drawable_images[]= new int[]{
+            R.drawable.img01,
+            R.drawable.img02,
+            R.drawable.img03,
+            R.drawable.img04,
+            R.drawable.img05,
+            R.drawable.img06,
+            R.drawable.img07,
+            R.drawable.img08
+    };
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,8 +96,10 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getApplicationContext(), SelectingImages.class));
-                startActivity(getIntent());
+           //     startActivity(new Intent(getApplicationContext(), SelectingImages.class));
+           //     startActivity(getIntent());
+
+                loadImagefromGallery(v);
 
 /*
                 loadImagefromGallery(v);
@@ -109,6 +125,25 @@ public class MainActivity extends Activity {
             }
         });
 
+
+
+        // reset to defualt images at Drawable
+        reset2 = (Button) findViewById(R.id.resetIMG);
+        reset2.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View v) {
+
+                for (int i=0; i<8; i++){
+                    editor.putString("pic_" + i, drawable_images[i] + "");
+                    editor.commit();
+                    Log.i("reset img", i+"");
+
+                }
+            }//onClick
+
+
+        });
 
     }//onCreate
 
@@ -145,7 +180,7 @@ public class MainActivity extends Activity {
                 // Get the Image from data
                 Uri selectedImage = data.getData();
 
-                editor.putString("pic_" + step, selectedImage + "");
+                editor.putString("pic_" + step, getRealPathFromURI(selectedImage));
                 editor.commit();
                 step++;
 
@@ -160,6 +195,25 @@ public class MainActivity extends Activity {
 
     }//onActivityResult
 
+
+    public String getRealPathFromURI(Uri contentUri) {
+
+        Cursor cursor = null;
+        try {
+
+            String[] proj = { MediaStore.Images.Media.DATA };
+            cursor = getContentResolver().query(contentUri,  proj, null, null, null);
+            cursor.moveToFirst();
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+            return cursor.getString(column_index);
+        } finally {
+
+            if (cursor != null) {
+
+                cursor.close();
+            }
+        }
+    }//getRealPathFromURI
 
 
 }//MainActivity
