@@ -96,10 +96,10 @@ public class MainActivity extends Activity {
             @Override
             public void onClick(View v) {
 
-           //     startActivity(new Intent(getApplicationContext(), SelectingImages.class));
-           //     startActivity(getIntent());
+                startActivity(new Intent(getApplicationContext(), SelectingImages.class));
+                startActivity(getIntent());
 
-                loadImagefromGallery(v);
+
 
 /*
                 loadImagefromGallery(v);

@@ -26,7 +26,7 @@ public class SelectingImages extends AppCompatActivity {
     int step = 0;
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
-    Button slct1, slct2,slct3,slct4,slct5,slct6,slct7,slct8;
+    Button slct1, slct2,slct3,slct4,slct5,slct6,slct7,slct8, btnBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -130,6 +130,19 @@ public class SelectingImages extends AppCompatActivity {
                 //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
             }
         });
+/*
+
+        btnBack = (Button)findViewById(R.id.BackBTN);
+                btnBack.setOnClickListener(new View.OnClickListener() {
+
+                    @Override
+                    public void onClick(View v) {
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        startActivity(getIntent());
+
+                    }
+                });
+*/
 
     }//onCreate
 

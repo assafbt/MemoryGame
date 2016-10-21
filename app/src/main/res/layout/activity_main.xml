@@ -13,7 +13,9 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.assafbt.projects.memorygame.MainActivity">
+    android:background="@color/Bright_Lavender"
+    tools:context="com.assafbt.projects.memorygame.MainActivity"
+    android:orientation="vertical">
 
     <Button
         android:layout_width="wrap_content"
@@ -101,15 +103,17 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="00:00:00"
         android:id="@+id/best3View"
-        android:layout_marginBottom="25dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/best2View"
+        android:layout_alignLeft="@+id/best2View"
+        android:layout_alignStart="@+id/best2View" />
 
     <TextView
         android:layout_width="wrap_content"

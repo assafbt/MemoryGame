@@ -316,7 +316,7 @@ public class GameActivity extends AppCompatActivity {
 
         if (card[i].getImgUp().length() < 16) { /* need to find better way to identify drawable image uri, temporary check the length, the resouce id is short length */
             Picasso.with(getApplicationContext()).load(Integer.parseInt(card[i].getImgUp()))
-                    .placeholder(R.drawable.ic_launcher) // optional
+                    //.placeholder(R.drawable.ic_launcher) // optional
                     .fit().centerInside().into(iv);
         }
         else {
