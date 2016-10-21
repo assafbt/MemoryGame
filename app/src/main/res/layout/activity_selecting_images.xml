@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="plaese select 8 pictures"
+        android:text="@string/select_title"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true" />
@@ -30,7 +30,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select1"
+        android:text="@string/pic1"
         android:id="@+id/select1"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
@@ -41,7 +41,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select2"
+        android:text="@string/pic2"
         android:id="@+id/select2"
         android:layout_below="@+id/select1"
         android:layout_alignParentLeft="true"
@@ -50,7 +50,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select3"
+        android:text="@string/pic3"
         android:id="@+id/select3"
         android:layout_below="@+id/select2"
         android:layout_alignParentLeft="true"
@@ -59,7 +59,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select4"
+        android:text="@string/pic4"
         android:id="@+id/select4"
         android:layout_below="@+id/select3"
         android:layout_alignParentLeft="true"
@@ -71,7 +71,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select5"
+        android:text="@string/pic5"
         android:id="@+id/select5"
         android:layout_below="@+id/select4"
         android:layout_alignParentLeft="true"
@@ -80,7 +80,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select6"
+        android:text="@string/pic6"
         android:id="@+id/select6"
         android:layout_below="@+id/select5"
         android:layout_alignParentLeft="true"
@@ -89,7 +89,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select7"
+        android:text="@string/pic7"
         android:id="@+id/select7"
         android:layout_below="@+id/select6"
         android:layout_alignParentLeft="true"
@@ -98,7 +98,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="select8"
+        android:text="@string/pic8"
         android:id="@+id/select8"
         android:layout_below="@+id/select7"
         android:layout_alignParentLeft="true"

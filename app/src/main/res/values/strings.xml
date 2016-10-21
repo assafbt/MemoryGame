@@ -1,4 +1,34 @@
 <resources>
-    <string name="app_name">Memory Game App</string>
+
+    <!-- activity = MainActivity -->
+    <string name="app_name">Memory Card Game</string>
     <string name="title_activity_game">GameActivity</string>
+    <string name="score_title"> Best Score List</string>
+    <string name="play_game">Play Game</string>
+    <string name="select_imgs">Select Your photos</string>
+    <string name="reset_imgs">Reset Photos</string>
+    <string name="reset_score">Reset Score</string>
+    <string name="score1">Best #1</string>
+    <string name="score2">Best #2</string>
+    <string name="score3">Best #3</string>
+
+
+
+    <!-- activity = SelectingImages -->
+    <string name="pic1">select photo #1</string>
+    <string name="pic2">select photo #2</string>
+    <string name="pic3">select photo #3</string>
+    <string name="pic4">select photo #4</string>
+    <string name="pic5">select photo #5</string>
+    <string name="pic6">select photo #6</string>
+    <string name="pic7">select photo #7</string>
+    <string name="pic8">select photo #8</string>
+    <string name="select_title">plaese select 8 pictures</string>
+
+
+    <!-- activity =  GameActivity -->
+    <string name="your_score">Your score: </string>
+    <string name="restart_game">Restart</string>
+
+
 </resources>

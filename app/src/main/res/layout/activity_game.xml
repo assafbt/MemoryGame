@@ -189,7 +189,7 @@
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Restart"
+            android:text="@string/restart_game"
             android:id="@+id/restartBTN"
             android:layout_gravity="left|center_vertical" />
 
@@ -197,7 +197,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="Your score:"
+            android:text="@string/your_score"
             android:id="@+id/textView2"
             android:layout_gravity="center" />
 
