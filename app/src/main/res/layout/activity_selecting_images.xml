@@ -35,7 +35,8 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="65dp" />
+        android:layout_marginTop="65dp"
+        android:background="@drawable/select_design" />
 
 
     <Button
@@ -45,7 +46,8 @@
         android:id="@+id/select2"
         android:layout_below="@+id/select1"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design" />
 
     <Button
         android:layout_width="wrap_content"
@@ -54,7 +56,8 @@
         android:id="@+id/select3"
         android:layout_below="@+id/select2"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -63,7 +66,8 @@
         android:id="@+id/select4"
         android:layout_below="@+id/select3"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design" />
 
 
 
@@ -75,7 +79,8 @@
         android:id="@+id/select5"
         android:layout_below="@+id/select4"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -84,7 +89,8 @@
         android:id="@+id/select6"
         android:layout_below="@+id/select5"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -93,7 +99,9 @@
         android:id="@+id/select7"
         android:layout_below="@+id/select6"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design"
+        />
 
     <Button
         android:layout_width="wrap_content"
@@ -102,7 +110,8 @@
         android:id="@+id/select8"
         android:layout_below="@+id/select7"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@drawable/select_design"/>
 
    <!--
     <Button
