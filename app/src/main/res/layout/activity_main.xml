@@ -17,51 +17,29 @@
     tools:context="com.assafbt.projects.memorygame.MainActivity"
     android:orientation="vertical">
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/play_game"
-        android:id="@+id/startBTN"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
+        android:text="@string/main_title1"
+        android:id="@+id/MainTitle1"
         android:layout_marginTop="50dp"
-        android:background="@drawable/play_btn"/>
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/main_title2"
+        android:id="@+id/MainTitle2"
+        android:layout_below="@+id/MainTitle1"
+        android:layout_centerHorizontal="true"/>
+<!--
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/select_imgs"
-        android:id="@+id/selectBTN"
-        android:layout_below="@+id/startBTN"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
-        android:layout_alignParentStart="false"
-        android:layout_alignParentLeft="false"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reset_score"
-        android:id="@+id/resetBTN"
-        android:layout_centerVertical="true"
-        android:layout_below="@+id/resetIMG"
-        android:layout_marginTop="30dp"
-        android:layout_alignRight="@+id/selectBTN"
-        android:layout_alignEnd="@+id/selectBTN"
-        android:layout_alignLeft="@+id/selectBTN"
-        android:layout_alignStart="@+id/selectBTN" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/reset_imgs"
-        android:id="@+id/resetIMG"
-        android:layout_below="@+id/selectBTN"
-        android:layout_centerVertical="true"
-        android:layout_marginTop="30dp"
-        android:layout_alignRight="@+id/resetBTN"
-        android:layout_alignEnd="@+id/resetBTN"
-        android:layout_alignLeft="@+id/resetBTN"
-        android:layout_alignStart="@+id/resetBTN" />
+    <FrameLayout
+        android:layout_height="match_parent"
+        android:layout_width="match_parent"
+        android:id="@+id/ScoreList"
+        android:layout_alignParentBottom="true">
+-->
 
     <TextView
         android:layout_width="wrap_content"
@@ -74,16 +52,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="00:00:00"
-        android:id="@+id/best1View"
-        android:layout_alignTop="@+id/best1Title"
-        android:layout_centerHorizontal="true" />
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -105,18 +74,7 @@
         android:layout_alignParentStart="true" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="00:00:00"
-        android:id="@+id/best3View"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/best2View"
-        android:layout_alignLeft="@+id/best2View"
-        android:layout_alignStart="@+id/best2View" />
-
-    <TextView
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -125,5 +83,76 @@
         android:layout_alignTop="@+id/best3View"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="00:00:00"
+            android:id="@+id/best1View"
+            android:layout_alignTop="@+id/best1Title"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="00:00:00"
+            android:id="@+id/best3View"
+            android:layout_marginTop="25dp"
+            android:layout_below="@+id/best2View"
+            android:layout_alignLeft="@+id/best2View"
+            android:layout_alignStart="@+id/best2View" />
+
+<!--
+    </FrameLayout>
+-->
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_score"
+        android:id="@+id/resetBTN"
+        android:background="@drawable/play_btn"
+        android:layout_alignBottom="@+id/resetIMG"
+        android:layout_toRightOf="@+id/resetIMG"
+        android:layout_toEndOf="@+id/resetIMG"
+        android:layout_marginLeft="12dp"
+        android:layout_marginStart="12dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/play_game"
+        android:id="@+id/startBTN"
+        android:background="@drawable/play_btn"
+        android:layout_below="@+id/MainTitle2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="34dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_imgs"
+        android:id="@+id/selectBTN"
+        android:background="@drawable/play_btn"
+        android:layout_alignBaseline="@+id/startBTN"
+        android:layout_alignBottom="@+id/startBTN"
+        android:layout_toRightOf="@+id/startBTN"
+        android:layout_toEndOf="@+id/startBTN" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/reset_imgs"
+        android:id="@+id/resetIMG"
+        android:background="@drawable/play_btn"
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/startBTN"
+        android:layout_toLeftOf="@+id/selectBTN"
+        android:layout_toStartOf="@+id/selectBTN"
+        android:layout_marginRight="26dp"
+        android:layout_marginEnd="26dp" />
+
 
 </RelativeLayout>

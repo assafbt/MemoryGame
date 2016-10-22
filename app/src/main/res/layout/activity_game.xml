@@ -28,7 +28,8 @@
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:baselineAligned="false">
+                android:baselineAligned="false"
+                android:layout_margin="1dp">
 
                 <ImageView
 
@@ -37,7 +38,8 @@
                     android:layout_height="100dp"
                     android:layout_weight="1"
                     android:layout_gravity="center_vertical"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img01"
@@ -45,7 +47,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img02"
@@ -53,7 +56,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img03"
@@ -61,12 +65,14 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop" />
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="1dp">
 
                 <ImageView
 
@@ -75,7 +81,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img11"
@@ -83,7 +90,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img12"
@@ -91,7 +99,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img13"
@@ -99,12 +108,14 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="1dp">
 
                 <ImageView
 
@@ -113,7 +124,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img21"
@@ -121,7 +133,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img22"
@@ -129,7 +142,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img23"
@@ -137,12 +151,14 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
             </TableRow>
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_margin="1dp">
 
                 <ImageView
 
@@ -151,7 +167,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img31"
@@ -159,7 +176,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img32"
@@ -167,7 +185,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
                 <ImageView
 
                     android:id="@+id/img33"
@@ -175,7 +194,8 @@
                     android:layout_width="50dp"
                     android:layout_height="100dp"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"/>
+                    android:scaleType="centerCrop"
+                    android:layout_marginRight="1dp"/>
             </TableRow>
         </TableLayout>
     </FrameLayout>
@@ -187,19 +207,13 @@
         android:layout_gravity="bottom">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:text="@string/restart_game"
             android:id="@+id/restartBTN"
-            android:layout_gravity="left|center_vertical" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:text="@string/your_score"
-            android:id="@+id/textView2"
-            android:layout_gravity="center" />
+            android:layout_gravity="left|center_vertical"
+            android:background="@drawable/play_btn"
+            />
 
         <TextView
             android:layout_width="wrap_content"
@@ -208,5 +222,13 @@
             android:text="00:00:00"
             android:id="@+id/scoreView"
             android:layout_gravity="center_vertical|right" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/your_score"
+            android:id="@+id/textView2"
+            android:layout_gravity="center" />
     </FrameLayout>
 </LinearLayout>
