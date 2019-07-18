@@ -13,7 +13,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/Bright_Lavender"
+    android:background="@color/Background_Lavender"
     tools:context="com.assafbt.projects.memorygame.SelectingImages"
     android:orientation="vertical">
 
@@ -113,14 +113,23 @@
         android:layout_alignParentStart="true"
         android:background="@drawable/select_design"/>
 
-   <!--
     <Button
+        android:id="@+id/back_from_select_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/BackBTN"
-        android:text="BACK"
+        android:text="@string/save_back_btn"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
--->
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/play_btn" />
+
+    <!--
+     <Button
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/BackBTN"
+         android:text="BACK"
+         android:layout_alignParentBottom="true"
+         android:layout_centerHorizontal="true" />
+ -->
 
 </RelativeLayout>

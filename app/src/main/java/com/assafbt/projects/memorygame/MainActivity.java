@@ -22,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends Activity {
-    Button start, select, reset1,reset2;
+    Button start, select, reset1,reset2, aboutBtn;
     private static int RESULT_LOAD_IMG = 8;
     String imgDecodableString;
     int step = 0;
@@ -77,6 +77,15 @@ public class MainActivity extends Activity {
             best3v.setText(dalObj.convertToTimeStringFormat(dalObj.getThird()));
 
 
+            aboutBtn = (Button)findViewById(R.id.infoBtn);
+            aboutBtn.setOnClickListener(new View.OnClickListener() {
+
+                @Override
+                public void onClick(View v) {
+                    startActivity(new Intent(getApplicationContext(),WebViewActivity.class));
+                    startActivity(getIntent());
+                }
+                });
 
 
            start = (Button)findViewById(R.id.startBTN);

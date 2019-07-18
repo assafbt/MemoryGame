@@ -3,8 +3,14 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="Bright_Lavender">#BF94E4</color>
+
     <color name="Purple_Heart">#69359C	</color>
     <color name="Lite_green">#8DB600</color>
     <color name="Pastel_Green">#77DD77</color>
+
+
+    <color name="Background_Lavender">#BF94E4</color>
+    <color name="Background_purple">#775678</color>
+    <color name="Background_light">#eaeadf</color>
+    <color name="Background_green">#6fa753</color>
 </resources>

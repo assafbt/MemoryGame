@@ -6,10 +6,14 @@
 
 package com.assafbt.projects.memorygame;
 
+import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -27,6 +31,12 @@ public class SelectingImages extends AppCompatActivity {
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     Button slct1, slct2,slct3,slct4,slct5,slct6,slct7,slct8, btnBack;
+
+    String[] premissionList = {
+            "READ_EXTERNAL_STORAGE",
+            "WRITE_EXTERNAL_STORAGE" };
+    String path = "android.premission.";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,9 +51,10 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,1);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,1);
             }
         });
 
@@ -53,9 +64,11 @@ public class SelectingImages extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                loadImagefromGallery(v,2);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-            }
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
+
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,2);
+                }
         });
 
 
@@ -64,10 +77,11 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,3);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-            }
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,3);
+                }
         });
 
         slct4 = (Button)findViewById(R.id.select4);
@@ -75,10 +89,11 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,4);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-            }
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,4);
+                }
         });
 
 
@@ -91,10 +106,11 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,5);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-            }
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,5);
+                }
         });
 
         slct6 = (Button)findViewById(R.id.select6);
@@ -102,10 +118,11 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,6);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-            }
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,6);
+                }
         });
 
 
@@ -114,10 +131,11 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,7);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
-            }
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,7);
+               }
         });
 
         slct8 = (Button)findViewById(R.id.select8);
@@ -125,9 +143,19 @@ public class SelectingImages extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                boolean isPermissionGranted  = getPremission(Manifest.permission.READ_EXTERNAL_STORAGE);
 
-                loadImagefromGallery(v,8);
-                //   Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();
+                if (isPermissionGranted)
+                    loadImagefromGallery(v,8);
+                }
+        });
+
+        btnBack = (Button)findViewById(R.id.back_from_select_btn);
+        btnBack.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
             }
         });
 /*
@@ -218,5 +246,50 @@ public class SelectingImages extends AppCompatActivity {
 
     }//onActivityResult
 
+    final int premissionCheck = 34;
+
+    private boolean getPremission( String premission) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            Log.i("BuildVERSION", Build.VERSION.SDK_INT+"");
+            if (ContextCompat.checkSelfPermission(this, premission) == PackageManager.PERMISSION_GRANTED){
+
+                // the premission already approved,
+                Log.i("premission"+premission,"approved");
+                return true;
+            } else {
+                Log.i("premission"+premission," is not approved");
+                requestPermissions(new String[]{premission}, premissionCheck);
+
+                //need to check if the user approved the permission after asking him
+
+
+                return false;
+            }
+        }
+        return true;
+    } //getPremission
+
+
+    @Override
+    public void onRequestPermissionsResult(int reqeustCode, String permissions[], int[] grantResults) {
+        switch (reqeustCode) {
+
+            case premissionCheck: {
+                // if the user cancel the permissions request
+                Log.i("PermissionsResult", "the user cancel the permissions request");
+
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // this code block will work if you confirm that you are reqeusting permission
+                    Log.i("PermissionsResult", "you are reqeusting permission");
+                } else {
+
+                    // this code block will work if the user rejects your permission
+                    Log.i("PermissionsResult", "the user rejects your permission");
+                    Toast.makeText(getApplicationContext(), "Please appprove the permission ", Toast.LENGTH_LONG).show();
+                }
+                return;
+            }
+        }
+    }//onRequestPermissionsResult
 
 }//SelectingImages

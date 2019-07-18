@@ -41,7 +41,7 @@ public class GameActivity extends AppCompatActivity {
                 im30, im31, im32, im33;
 
     TextView correctTime;
-    Button rstBtn;
+    Button rstBtn, back_btn;
 
 
     boolean isRunning = false;
@@ -145,12 +145,17 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        back_btn = (Button)findViewById(R.id.back_from_game_btn);
+        back_btn.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
     }//onCreate
-
-
-
 
     private void showPictureOnClick(){
 
@@ -310,12 +315,10 @@ public class GameActivity extends AppCompatActivity {
 
     }//showPictureOnClick
 
-
-
     private void showPicture(int i, ImageView iv){
 
         if (card[i].getImgUp().length() < 16) { /* need to find better way to identify drawable image uri, temporary check the length, the resouce id is short length */
-            Picasso.with(getApplicationContext()).load(Integer.parseInt(card[i].getImgUp()))
+            Picasso.get().load(Integer.parseInt(card[i].getImgUp()))
                     //.placeholder(R.drawable.ic_launcher) // optional
                     .fit().centerInside().into(iv);
         }
@@ -329,7 +332,7 @@ public class GameActivity extends AppCompatActivity {
 
 
             //String load_image =
-            Picasso.with(this).load("file://" + card[i].getImgUp()) /* this is gallery image path not uri */
+            Picasso.get().load("file://" + card[i].getImgUp()) /* this is gallery image path not uri */
                     .placeholder(R.drawable.ic_launcher) // optional
                     .fit().centerInside().into(iv);
 
@@ -404,73 +407,73 @@ public class GameActivity extends AppCompatActivity {
         countFaceUp=0;
         //1st row
         if(!card[0].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+            Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im00);
         if(!card[1].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+            Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im01);
         if(!card[2].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im02);
         if(!card[3].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im03);
 
         //2nd row
         if(!card[4].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im10);
         if(!card[5].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im11);
         if(!card[6].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im12);
         if(!card[7].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im13);
 
         //3rd row
         if(!card[8].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im20);
         if(!card[9].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im21);
         if(!card[10].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im22);
         if(!card[11].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im23);
 
         //4th row
         if(!card[12].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im30);
         if(!card[13].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+        Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im31);
         if(!card[14].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+            Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im32);
         if(!card[15].getFaceUp())
-        Picasso.with(getApplicationContext()).load(R.drawable.images)
+            Picasso.get().load(R.drawable.images)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im33);
 
@@ -483,7 +486,7 @@ public class GameActivity extends AppCompatActivity {
         allFaceDown();
         start();
 
-    }
+    }//restart
 
     private void start(){
         if (!isRunning) {
@@ -533,6 +536,6 @@ public class GameActivity extends AppCompatActivity {
         int num = Integer.parseInt(str);
         num ++;
         return num+"";
-    }
+    }//strPlusOne
 
 }//GameActivity
