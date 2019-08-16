@@ -40,7 +40,7 @@ public class MainActivity extends Activity {
             R.drawable.img05,
             R.drawable.img06,
             R.drawable.img07,
-            R.drawable.img08
+            R.drawable.img09
     };
 
 

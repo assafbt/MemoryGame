@@ -10,10 +10,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin"
+    android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/Background_light"
+    android:background="@drawable/bg"
     tools:context="com.assafbt.projects.memorygame.MainActivity"
     android:orientation="vertical">
 
@@ -24,14 +24,17 @@
         android:id="@+id/MainTitle1"
         android:layout_marginTop="50dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_title2"
         android:id="@+id/MainTitle2"
         android:layout_below="@+id/MainTitle1"
-        android:layout_centerHorizontal="true"/>
+        android:layout_centerHorizontal="true"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 <!--
 
     <FrameLayout
@@ -41,73 +44,87 @@
         android:layout_alignParentBottom="true">
 -->
 
+    <!-- Score Board-->
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/ScoreBoard"
+    android:layout_above="@+id/infoBtn"
+    android:layout_marginBottom="20dp"
+    android:layout_centerHorizontal="true"
+    android:background="#80ffffff">
 
-
-    <!-- -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/score_board"
+        android:id="@+id/tv_board"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
+
+    <!-- Line #1 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/score1"
         android:id="@+id/best1Title"
-        android:layout_marginTop="42dp"
-        android:layout_below="@+id/resetBTN"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_below="@+id/tv_board"
 
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="00:00:00"
-        android:id="@+id/best2View"
-        android:layout_marginTop="40dp"
-        android:layout_below="@+id/best1View"
-        android:layout_alignLeft="@+id/best1View"
-        android:layout_alignStart="@+id/best1View" />
-
+        />
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/score_zero"
+        android:layout_marginStart="30dp"
+        android:id="@+id/best1View"
+        android:layout_toEndOf="@+id/best1Title"
+        android:layout_below="@+id/tv_board" />
+
+
+    <!-- Line #2 -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/score2"
         android:id="@+id/best2Title"
         android:layout_alignTop="@+id/best2View"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:text="@string/score_zero"
+        android:id="@+id/best2View"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/best1View"
+        android:layout_alignStart="@+id/best1View" />
 
+    <!-- Line #3 -->
         <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:text="@string/score3"
         android:id="@+id/best3Title"
         android:layout_alignTop="@+id/best3View"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="00:00:00"
-            android:id="@+id/best1View"
-            android:layout_alignTop="@+id/best1Title"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:text="00:00:00"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:text="@string/score_zero"
             android:id="@+id/best3View"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="30dp"
             android:layout_below="@+id/best2View"
-            android:layout_alignLeft="@+id/best2View"
-            android:layout_alignStart="@+id/best2View"
-            />
-
+            android:layout_alignStart="@+id/best2View" />
+</RelativeLayout>
 <!--
     </FrameLayout>
 -->
@@ -129,35 +146,19 @@
         android:layout_height="wrap_content"
         android:text="@string/reset_imgs"
         android:id="@+id/resetIMG"
-        android:background="@drawable/reset_btn"
+        android:background="@drawable/play_btn"
         android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_toStartOf="@+id/best1View"
-        android:layout_toLeftOf="@+id/best1View" />
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/spacebar"
-        android:layout_toLeftOf="@+id/resetIMG"
-        android:layout_toStartOf="@+id/resetIMG"
-        android:layout_centerVertical="true"
-
-        />
-
+        android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/reset_score"
         android:id="@+id/resetBTN"
-        android:background="@drawable/reset_btn"
+        android:background="@drawable/play_btn"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@+id/spacebar"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_toEndOf="@+id/best1View"
-        android:layout_toRightOf="@+id/best1View" />
+        android:layout_toStartOf="@+id/resetIMG"
+        android:layout_alignParentEnd="true" />
 
 
 
