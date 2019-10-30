@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Assaf Biton
+  ~  */
+  -->
+
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:src="@drawable/purple"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/purple"
+    android:textColor="#ffffff"/>
