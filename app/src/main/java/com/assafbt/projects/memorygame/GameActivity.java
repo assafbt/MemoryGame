@@ -82,7 +82,7 @@ public class GameActivity extends AppCompatActivity {
 
         // init the face down card
         for(int i =0; i<8;i++) {
-            imagUri[i][0] = new String();
+            imagUri[i][0] = "";
             imagUri[i][0] = prefs.getString("pic_" + i, null);
             imagUri[i][1] = "0";
 
@@ -93,13 +93,13 @@ public class GameActivity extends AppCompatActivity {
             // if no image - use default images from drawable resources
             if (imagUri[i][0] == null) {
                 editor.putString("pic_" + i, drawable_images[i] + "");
-                editor.commit();
+                editor.apply();
                 imagUri[i][0] = prefs.getString("pic_" + i, null);
                 imagUri[i][1] = "0";
             }
          }
         correctTime = (TextView) findViewById(R.id.scoreView);
-        start();
+       // start();
 
         //X16
         //1st row
@@ -140,7 +140,9 @@ public class GameActivity extends AppCompatActivity {
                 for (int i=0;i<16;i++){
                     card[i].setFaceUp(false);
                 }
-
+                pairsToGo = 8;
+                isRunning = false;
+                correctTime.setText(R.string.score_zero);
                 restart();
             }
         });
@@ -159,10 +161,14 @@ public class GameActivity extends AppCompatActivity {
 
     private void showPictureOnClick(){
 
+
             //1st row
             im00.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(0, im00);
@@ -172,6 +178,9 @@ public class GameActivity extends AppCompatActivity {
             im01.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(1, im01);
@@ -182,6 +191,9 @@ public class GameActivity extends AppCompatActivity {
             im02.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(2, im02);
@@ -191,6 +203,9 @@ public class GameActivity extends AppCompatActivity {
             im03.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(3, im03);
@@ -202,6 +217,9 @@ public class GameActivity extends AppCompatActivity {
             im10.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(4, im10);
@@ -211,6 +229,9 @@ public class GameActivity extends AppCompatActivity {
             im11.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(5, im11);
@@ -220,6 +241,9 @@ public class GameActivity extends AppCompatActivity {
             im12.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(6, im12);
@@ -229,6 +253,9 @@ public class GameActivity extends AppCompatActivity {
             im13.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(7, im13);
@@ -240,6 +267,9 @@ public class GameActivity extends AppCompatActivity {
             im20.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(8, im20);
@@ -249,6 +279,9 @@ public class GameActivity extends AppCompatActivity {
             im21.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(9, im21);
@@ -258,6 +291,9 @@ public class GameActivity extends AppCompatActivity {
             im22.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(10, im22);
@@ -267,6 +303,9 @@ public class GameActivity extends AppCompatActivity {
             im23.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(11, im23);
@@ -278,6 +317,9 @@ public class GameActivity extends AppCompatActivity {
             im30.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(12, im30);
@@ -287,6 +329,9 @@ public class GameActivity extends AppCompatActivity {
             im31.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(13, im31);
@@ -296,6 +341,9 @@ public class GameActivity extends AppCompatActivity {
             im32.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(14, im32);
@@ -305,6 +353,9 @@ public class GameActivity extends AppCompatActivity {
             im33.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (!isRunning && pairsToGo ==8) {
+                        start();
+                    }
                     if (countFaceUp<2) {
                         countFaceUp++;
                         showPicture(15, im33);
@@ -484,7 +535,7 @@ public class GameActivity extends AppCompatActivity {
     private void restart(){
         stop(this.editor);
         allFaceDown();
-        start();
+      //  start();
 
     }//restart
 
@@ -525,6 +576,7 @@ public class GameActivity extends AppCompatActivity {
             secs = secs % 60;
             milliseconds = (int) (updatedTime % 1000);
             correctTime.setText(" " + mins + ":" + String.format("%02d", secs) + ":" + String.format("%03d", milliseconds));
+
 
             customHandler.postDelayed(this, 0);
 
