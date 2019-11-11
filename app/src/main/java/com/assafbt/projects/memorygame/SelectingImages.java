@@ -46,6 +46,8 @@ public class SelectingImages extends AppCompatActivity {
         prefs = getSharedPreferences("shPref", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
         slct1 = (Button)findViewById(R.id.select1);
         slct1.setOnClickListener(new View.OnClickListener() {
 

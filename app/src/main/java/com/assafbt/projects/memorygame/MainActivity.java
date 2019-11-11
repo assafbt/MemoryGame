@@ -61,6 +61,7 @@ public class MainActivity extends Activity {
         prefs = getSharedPreferences("shPref", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
 
 
@@ -68,6 +69,9 @@ public class MainActivity extends Activity {
         TextView best2v = (TextView) findViewById(R.id.best2View);
         TextView best3v = (TextView) findViewById(R.id.best3View);
 
+        TextView appVersion = (TextView) findViewById(R.id.appVersion);
+        String versionName = "Version " + BuildConfig.VERSION_NAME;
+        appVersion.setText(versionName);
 
         if (dalObj.isBDEmpty()){
             dalObj.initRecords();
@@ -158,49 +162,11 @@ public class MainActivity extends Activity {
                     editor.putString("pic_" + i, drawable_images[i] + "");
                     editor.commit();
                     Log.i("reset img", i+"");
-
                 }
             }//onClick
 
 
         });
-
-        languageBtn = (Button) findViewById(R.id.language_btn);
-        // setLanguage("he");
-         /*
-       String language = Locale.getDefault().getLanguage();
-        Log.i("locale", "locale,  " + language);
-        if (language == "en") {
-            isEnglishLanguage = true;
-        }
-        else {
-            isEnglishLanguage = false;
-            language = "he";
-        }
-        languageBtn.setText(language);
-        languageBtn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                Log.i("locale","locale, isEnglishLanguage = " + isEnglishLanguage);
-                if (isEnglishLanguage) {
-                    setLanguage("he");
-                    isEnglishLanguage = false;
-                    languageBtn.clearComposingText();
-                    languageBtn.setText("heb");
-                    Log.i("locale","locale, isEnglishLanguage changed to " + isEnglishLanguage);
-
-                }
-                else {
-                    setLanguage("en");
-                    isEnglishLanguage = true;
-                    languageBtn.clearComposingText();
-                    languageBtn.setText("en");
-                    Log.i("locale","locale, isEnglishLanguage changed to " + isEnglishLanguage);
-                }
-            }//onClick
-
-
-        });*/
     }//onCreate
 
     @Override

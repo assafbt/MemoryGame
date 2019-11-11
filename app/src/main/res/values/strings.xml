@@ -7,7 +7,7 @@
 
 <resources>
         <!-- activity = MainActivity -->
-        <string name="app_name">משחק הזיכרון</string>
+        <string name="app_name">אח בוגר</string>
         <string name="title_activity_game">GameActivity</string>
         <string name="score_title"> לוח תוצאות</string>
         <string name="play_game">התחל לשחק</string>
@@ -40,9 +40,7 @@
         <string name="your_score">התוצאה שלך: </string>
         <string name="restart_game">התחל מחדש</string>
 
-        <string name="title_activity_about_us">קצת עלינו</string>
         <string name="action_settings">הגדרות</string>
-        <string name="made_by">נעשה ע"י אסף ביטון</string>
         <string name="about_text">קצת על העמותה</string>
         <string name="save_back_btn">חזרה</string>
 

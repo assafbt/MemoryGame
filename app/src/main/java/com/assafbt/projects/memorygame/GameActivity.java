@@ -78,6 +78,8 @@ public class GameActivity extends AppCompatActivity {
         prefs = getSharedPreferences("shPref", Context.MODE_PRIVATE);
         editor = prefs.edit();
 
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
         // init the face down card
         for(int i =0; i<8;i++) {
             imagUri[i][0] = "";
