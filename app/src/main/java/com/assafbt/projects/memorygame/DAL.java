@@ -289,7 +289,7 @@ public class DAL {
 
     }//resetScors
 
-    //first init images
+    //first init BBBS_logo_white
     public void initImages(){
         //get db
         db = imageDbHelper.getWritableDatabase();

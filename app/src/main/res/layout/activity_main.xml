@@ -13,29 +13,42 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@drawable/bg"
+    android:background="@drawable/main_backgroud"
     tools:context="com.assafbt.projects.memorygame.MainActivity"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/MainTitleAll"
+        android:orientation="vertical"
+        android:background="#D32C721C"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:paddingHorizontal="15dp"
+        android:paddingVertical="10dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_title1"
         android:id="@+id/MainTitle1"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/main_title2"
         android:id="@+id/MainTitle2"
-        android:layout_below="@+id/MainTitle1"
-        android:layout_centerHorizontal="true"/>
-
-
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#ffffff"
+        android:textAppearance="@style/TextAppearance.AppCompat.Light.Widget.PopupMenu.Large" />
+    </LinearLayout>
     <!-- Score Board-->
     <LinearLayout
         android:layout_width="match_parent"
@@ -69,6 +82,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="@string/score1"
+                android:textColor="#ffffff"
                 android:id="@+id/best1Title" />
             <TextView
                 android:layout_width="wrap_content"
@@ -76,6 +90,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="@string/score_zero"
                 android:layout_marginStart="30dp"
+                android:textColor="#ffffff"
                 android:id="@+id/best1View" />
         </LinearLayout>
         <LinearLayout
@@ -113,6 +128,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="@string/score3"
+                android:textColor="#ffffff"
                 android:id="@+id/best3Title" />
 
             <TextView
@@ -120,6 +136,7 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:text="@string/score_zero"
+                android:textColor="#ffffff"
                 android:layout_marginStart="30dp"
                 android:id="@+id/best3View" />
         </LinearLayout>
@@ -128,16 +145,7 @@
         </FrameLayout>
     -->
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/infoBtn"
-        android:text="@string/about_text"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/green_button1"
-        android:textColor="#ffffff"
-        android:layout_centerHorizontal="true"
-        android:textSize="20sp"/>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -185,25 +193,37 @@
         android:layout_height="wrap_content"
         android:text="@string/play_game"
         android:id="@+id/startBTN"
-        android:layout_below="@+id/MainTitle2"
+        android:layout_below="@+id/MainTitleAll"
         android:background="@drawable/purple_button"
         android:textColor="#ffffff"
         android:layout_centerHorizontal="true"
         android:textSize="20sp"/>
 
     <ImageView
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:src="@drawable/my_logo_12"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/iv_logo" />
+    <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/my_logo2"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:id="@+id/infoBtn"
+        android:text="@string/about_text"
+        android:layout_above="@+id/iv_logo"
+        android:background="@drawable/green_button1"
+        android:textColor="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/language_btn"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:text="null"/>
+        android:text="n"
+        android:visibility="gone"/>
 
 
 </RelativeLayout>

@@ -1,45 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Assaf Biton
+  ~  */
+  -->
+
 <resources>
-
-    <!-- activity = MainActivity -->
-    <string name="app_name">Memory Game</string>
-    <string name="title_activity_game">GameActivity</string>
-    <string name="score_title"> Best Score List</string>
-    <string name="play_game">Play Game</string>
-    <string name="select_imgs">Select photos</string>
-    <string name="reset_imgs">Reset \n Photos</string>
-    <string name="reset_score">Reset \n Scores</string>
-    <string name="score1">Best #1</string>
-    <string name="score2">Best #2</string>
-    <string name="score3">Best #3</string>
-    <string name="main_title1">Wellcome to Memory Card Game of</string>
-    <string name="main_title2">Big Brother Big Sister org</string>
-
-
-    <!-- activity = SelectingImages -->
-    <string name="pic1">select photo #1</string>
-    <string name="pic2">select photo #2</string>
-    <string name="pic3">select photo #3</string>
-    <string name="pic4">select photo #4</string>
-    <string name="pic5">select photo #5</string>
-    <string name="pic6">select photo #6</string>
-    <string name="pic7">select photo #7</string>
-    <string name="pic8">select photo #8</string>
-    <string name="select_title">plaese select 8 pictures</string>
+        <!-- activity = MainActivity -->
+        <string name="app_name">משחק הזיכרון</string>
+        <string name="title_activity_game">GameActivity</string>
+        <string name="score_title"> לוח תוצאות</string>
+        <string name="play_game">התחל לשחק</string>
+        <string name="select_imgs"> בחר תמונות</string>
+        <string name="reset_imgs">איפוס תמונות</string>
+        <string name="reset_score">איפוס תוצאה</string>
+        <string name="score1">מקום #1</string>
+        <string name="score2">מקום #2</string>
+        <string name="score3">מקום #3</string>
+        <string name="main_title1">ברוכים הבאים למשחק הזיכרון של </string>
+        <string name="main_title2">עמותת "אח בוגר אחות בוגרת"</string>
 
 
-    <!-- activity =  GameActivity -->
-    <string name="your_score">Your score: </string>
-    <string name="restart_game">Restart</string>
-    <string name="title_activity_about_us">AboutUsActivity</string>
-    <string name="action_settings">Settings</string>
-    <string name="made_by">Made by Assaf Biton</string>
-    <string name="about_text">About us</string>
-    <string name="save_back_btn">Back</string>
 
-    <string name="score_board">Score Board</string>
+        <!-- activity = SelectingImages -->
+        <string name="pic1">בחור תמונה #1</string>
+        <string name="pic2">בחור תמונה #2</string>
+        <string name="pic3">בחור תמונה #3</string>
+        <string name="pic4">בחור תמונה #4</string>
+        <string name="pic5">בחור תמונה #5</string>
+        <string name="pic6">בחור תמונה #6</string>
+        <string name="pic7">בחור תמונה #7</string>
+        <string name="pic8">בחור תמונה #8</string>
+        <string name="select_title">בחירת תמונות מהמכשיר</string>
+
+
+
+
+        <!-- activity =  GameActivity -->
+        <string name="your_score">התוצאה שלך: </string>
+        <string name="restart_game">התחל מחדש</string>
+
+        <string name="title_activity_about_us">קצת עלינו</string>
+        <string name="action_settings">הגדרות</string>
+        <string name="made_by">נעשה ע"י אסף ביטון</string>
+        <string name="about_text">קצת על העמותה</string>
+        <string name="save_back_btn">חזרה</string>
+
+        <string name="score_board">לוח תוצאות</string>
+
+
+
+
     <string name="score_zero" translatable="false">00:00:00</string>
-    <string name="content_Desc" translatable="false"> </string>
-    <string name="title_activity_first">FirstActivity</string>
+    <string name="content_Desc" > </string>
+    <string name="title_activity_first"> </string>
 
 
 </resources>

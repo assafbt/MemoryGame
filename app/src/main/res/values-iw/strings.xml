@@ -14,9 +14,9 @@
     <string name="select_imgs"> בחר תמונות</string>
     <string name="reset_imgs">איפוס תמונות</string>
     <string name="reset_score">איפוס תוצאה</string>
-    <string name="score1">תוצאה #1</string>
-    <string name="score2">תוצאה #2</string>
-    <string name="score3">תוצאה #3</string>
+    <string name="score1">מקום #1</string>
+    <string name="score2">מקום #2</string>
+    <string name="score3">מקום #3</string>
     <string name="main_title1">ברוכים הבאים למשחק הזיכרון של </string>
     <string name="main_title2">עמותת "אח בוגר אחות בוגרת"</string>
 
@@ -31,7 +31,7 @@
     <string name="pic6">בחור תמונה #6</string>
     <string name="pic7">בחור תמונה #7</string>
     <string name="pic8">בחור תמונה #8</string>
-    <string name="select_title">בחר/י 8 תמונות מהמכשיר שלך</string>
+    <string name="select_title">בחירת תמונות מהמכשיר</string>
 
 
 
@@ -47,6 +47,9 @@
     <string name="save_back_btn">חזרה</string>
 
     <string name="score_board">לוח תוצאות</string>
+    <string name="score_zero" >00:00:00</string>
+    <string name="content_Desc" > </string>
+    <string name="title_activity_first"> </string>
 
 
 

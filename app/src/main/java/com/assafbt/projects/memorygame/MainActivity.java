@@ -7,6 +7,7 @@
 package com.assafbt.projects.memorygame;
 
 import android.app.Activity;
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -117,7 +118,7 @@ public class MainActivity extends Activity {
 
                 startActivity(new Intent(getApplicationContext(), SelectingImages.class));
                 startActivity(getIntent());
-
+                //startActivity(getIntent(), ActivityOptions.makeSceneTransitionAnimation(SelectingImages).toBundle());
 
 
 /*
@@ -146,7 +147,7 @@ public class MainActivity extends Activity {
 
 
 
-        // reset to defualt images at Drawable
+        // reset to defualt BBBS_logo_white at Drawable
         reset2 = (Button) findViewById(R.id.resetIMG);
         reset2.setOnClickListener(new View.OnClickListener(){
 
@@ -165,7 +166,8 @@ public class MainActivity extends Activity {
         });
 
         languageBtn = (Button) findViewById(R.id.language_btn);
-        /* setLanguage("he");
+        // setLanguage("he");
+         /*
        String language = Locale.getDefault().getLanguage();
         Log.i("locale", "locale,  " + language);
         if (language == "en") {

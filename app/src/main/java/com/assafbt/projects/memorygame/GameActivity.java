@@ -30,7 +30,6 @@ public class GameActivity extends AppCompatActivity {
     String last;
     int lastInt;
     int pairsToGo = 8;
-    int itemPerRow = 4;
     int countFaceUp;
     Card card[] = new Card[16];
     String imagUri[][]= new String[8][2];
@@ -48,7 +47,6 @@ public class GameActivity extends AppCompatActivity {
     private static Context mContext;
 
     private long startTime = 0L;
-    private long bestTime = 0L;
 
     private Handler customHandler = new Handler();
 
@@ -99,7 +97,6 @@ public class GameActivity extends AppCompatActivity {
             }
          }
         correctTime = (TextView) findViewById(R.id.scoreView);
-       // start();
 
         //X16
         //1st row
@@ -127,8 +124,7 @@ public class GameActivity extends AppCompatActivity {
         im33 = (ImageView)findViewById(R.id.img33);
 
 
-        newOrder();
-        allFaceDown();
+       startOver();
 
         showPictureOnClick();
 
@@ -367,7 +363,6 @@ public class GameActivity extends AppCompatActivity {
     }//showPictureOnClick
 
     private void showPicture(int i, ImageView iv){
-
         if (card[i].getImgUp().length() < 16) { /* need to find better way to identify drawable image uri, temporary check the length, the resouce id is short length */
             Picasso.get().load(Integer.parseInt(card[i].getImgUp()))
                     //.placeholder(R.drawable.ic_launcher) // optional
@@ -375,20 +370,13 @@ public class GameActivity extends AppCompatActivity {
         }
         else {
 
-
              File image_file = new File("file://" + card[i].getImgUp());
-
-            //load("file://" + file.getAbsolutePath())
-            //load(Uri.fromFile(file))
-
 
             //String load_image =
             Picasso.get().load("file://" + card[i].getImgUp()) /* this is gallery image path not uri */
                     .placeholder(R.drawable.ic_launcher) // optional
                     .fit().centerInside().into(iv);
 
-            //ImageView imageView = (ImageView) findViewById(R.id.img32);
-            //imageView.setImageBitmap(BitmapFactory.decodeFile(card[i].getImgUp()));
 
         }
 
@@ -412,8 +400,6 @@ public class GameActivity extends AppCompatActivity {
                         Log.e("updateRecordShort", dalObj.getFirst() + "");
                         dalObj.updateRecord(updatedTime);
                         Log.e("updateRecord", dalObj.getFirst() + "");
-
-
                     }
 
                 } else {
@@ -421,7 +407,6 @@ public class GameActivity extends AppCompatActivity {
                     Runnable r = new Runnable() {
                         @Override
                         public void run() {
-                            //countFaceUp=0;
                             allFaceDown();
                         }
                     };
@@ -429,12 +414,19 @@ public class GameActivity extends AppCompatActivity {
                     Handler h = new Handler();
                     h.postDelayed(r, 1000); // <-- the "1000" is the delay time in miliseconds
                 }
-
             }
     }//showPicture
 
    private void newOrder(){
         System.out.println("### enter new order");
+
+
+       if(!(imagUri[0][1].equals("0") || imagUri[0][1].equals("1"))) {
+           for (int i = 0; i < 8; i++) {
+               imagUri[i][1] = "0";
+           }
+       }
+
         Random r = new Random();
         int num;
         for(int i =0; i<16;i++)
@@ -458,73 +450,73 @@ public class GameActivity extends AppCompatActivity {
         countFaceUp=0;
         //1st row
         if(!card[0].getFaceUp())
-            Picasso.get().load(R.drawable.images)
+            Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im00);
         if(!card[1].getFaceUp())
-            Picasso.get().load(R.drawable.images)
+            Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im01);
         if(!card[2].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im02);
         if(!card[3].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im03);
 
         //2nd row
         if(!card[4].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im10);
         if(!card[5].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im11);
         if(!card[6].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im12);
         if(!card[7].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im13);
 
         //3rd row
         if(!card[8].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im20);
         if(!card[9].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im21);
         if(!card[10].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im22);
         if(!card[11].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im23);
 
         //4th row
         if(!card[12].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im30);
         if(!card[13].getFaceUp())
-        Picasso.get().load(R.drawable.images)
+        Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im31);
         if(!card[14].getFaceUp())
-            Picasso.get().load(R.drawable.images)
+            Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im32);
         if(!card[15].getFaceUp())
-            Picasso.get().load(R.drawable.images)
+            Picasso.get().load(R.drawable.bbbs_logo_purple)
                 .placeholder(R.drawable.ic_launcher) // optional
                 .into(im33);
 
@@ -534,19 +526,20 @@ public class GameActivity extends AppCompatActivity {
 
     private void restart(){
         stop(this.editor);
-        allFaceDown();
-      //  start();
+        startOver();
 
     }//restart
 
+    private void startOver(){
+        newOrder();
+        allFaceDown();
+    }
     private void start(){
         if (!isRunning) {
             Log.i("Context", "let the game begin");
             isRunning = true;
-        //    view.invalidate();
             startTime = SystemClock.uptimeMillis();
             customHandler.postDelayed(updateTimerThread, 0);
-        //    ((GameView) view).resetCounter();
 
         }
         else {
@@ -586,8 +579,10 @@ public class GameActivity extends AppCompatActivity {
 
     private String strPlusOne(String str){
         int num = Integer.parseInt(str);
-        num ++;
+        num++;
+        Log.i("strPlusOne","num = " + num + " str = " + str);
         return num+"";
+        // return String.valueOf(num++);
     }//strPlusOne
 
 }//GameActivity

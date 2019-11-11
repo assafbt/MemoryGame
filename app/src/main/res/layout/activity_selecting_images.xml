@@ -5,7 +5,7 @@
   ~  */
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,115 +13,159 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/Background_Lavender"
+    android:background="@drawable/game_backgroud"
     tools:context="com.assafbt.projects.memorygame.SelectingImages"
     android:orientation="vertical">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/select_title"
         android:id="@+id/textView"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-
-    <Button
-        android:layout_width="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_gravity="center_horizontal"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:background="#D32C721C"
+        android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title" />
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pic1"
-        android:id="@+id/select1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="65dp"
-        android:background="@drawable/select_design" />
+        android:id="@+id/lines1234"
+        android:orientation="vertical"
+        android:layout_weight="8">
 
 
-    <Button
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pic2"
-        android:id="@+id/select2"
-        android:layout_below="@+id/select1"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design" />
+        android:id="@+id/line1"
+        android:orientation="horizontal"
+        android:layout_weight="2">
 
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic1"
+            android:id="@+id/select1"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic2"
+            android:id="@+id/select2"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pic3"
-        android:id="@+id/select3"
-        android:layout_below="@+id/select2"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design"/>
+        android:id="@+id/line2"
+        android:orientation="horizontal"
+        android:layout_weight="2">
 
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic3"
+            android:id="@+id/select3"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic4"
+            android:id="@+id/select4"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pic4"
-        android:id="@+id/select4"
-        android:layout_below="@+id/select3"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design" />
+        android:id="@+id/line3"
+        android:orientation="horizontal"
+        android:layout_weight="2">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic5"
+            android:id="@+id/select5"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
 
-
-
-    <Button
-        android:layout_width="wrap_content"
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic6"
+            android:id="@+id/select6"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/pic5"
-        android:id="@+id/select5"
-        android:layout_below="@+id/select4"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design"/>
+        android:id="@+id/line4"
+        android:orientation="horizontal"
+        android:layout_weight="2">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pic6"
-        android:id="@+id/select6"
-        android:layout_below="@+id/select5"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic7"
+            android:id="@+id/select7"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pic7"
-        android:id="@+id/select7"
-        android:layout_below="@+id/select6"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design"
-        />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/pic8"
-        android:id="@+id/select8"
-        android:layout_below="@+id/select7"
-        android:layout_alignParentStart="true"
-        android:background="@drawable/select_design"/>
-
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pic8"
+            android:id="@+id/select8"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/purple_button"
+            android:textColor="#ffffff"
+            android:textSize="20sp"/>
+    </LinearLayout>
+</LinearLayout>
     <Button
         android:id="@+id/back_from_select_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/save_back_btn"
-        android:layout_alignParentBottom="true"
+        android:layout_weight="1"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/green_button1"
+        android:textColor="#ffffff"
         android:layout_centerHorizontal="true"
-        android:background="@drawable/play_btn" />
+        android:textSize="20sp" />
 
-    <!--
-     <Button
-         android:layout_width="wrap_content"
-         android:layout_height="wrap_content"
-         android:id="@+id/BackBTN"
-         android:text="BACK"
-         android:layout_alignParentBottom="true"
-         android:layout_centerHorizontal="true" />
- -->
-
-</RelativeLayout>
+</LinearLayout>

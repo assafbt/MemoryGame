@@ -7,7 +7,7 @@
     android:paddingStart="@dimen/activity_horizontal_margin"
     android:paddingEnd="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/Background_green"
+    android:background="@drawable/game_backgroud"
     tools:context="com.assafbt.projects.memorygame.GameActivity"
     android:orientation="vertical">
 
@@ -18,7 +18,8 @@
             android:layout_height="393dp"
             android:layout_gravity="top"
             android:id="@+id/tableFrame"
-            android:textAlignment="center">
+            android:textAlignment="center"
+            android:background="#94CE96">
 
             <TableRow
                 android:layout_width="match_parent"
@@ -211,7 +212,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/scoreFrame">
+        android:id="@+id/scoreFrame"
+        android:background="@drawable/scoreboard3">
 
         <Button
             android:layout_width="100dp"
@@ -219,7 +221,10 @@
             android:text="@string/restart_game"
             android:id="@+id/restartBTN"
             android:layout_gravity="start|center_vertical"
-            android:background="@drawable/play_btn" />
+            android:textColor="#ffffff"
+            android:background="@drawable/purple_button"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -227,13 +232,17 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/score_zero"
             android:id="@+id/scoreView"
-            android:layout_gravity="center_vertical|end" />
+            android:layout_gravity="center_vertical|end"
+            android:textColor="#ffffff"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="25dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="@string/your_score"
+            android:textColor="#ffffff"
             android:id="@+id/textView2"
             android:layout_gravity="center" />
 
@@ -242,14 +251,17 @@
 
 
     <FrameLayout
+        android:id="@+id/backFrame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/backFrame">
+        >
+
         <Button
             android:id="@+id/back_from_game_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/play_btn"
-            android:text="@string/save_back_btn" />
+            android:background="@drawable/purple_button"
+            android:text="@string/save_back_btn"
+            android:textColor="#ffffff" />
     </FrameLayout>
 </LinearLayout>
