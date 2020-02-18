@@ -28,19 +28,14 @@ import android.widget.Toast;
 import java.util.Locale;
 
 public class MainActivity extends Activity {
-    Button select, reset1,reset2, aboutBtn,start, languageBtn;
+    Button select, reset1,reset2, aboutBtn,start;
     private static int RESULT_LOAD_IMG = 8;
-    String imgDecodableString;
     int step = 0;
 
     SharedPreferences prefs;
     SharedPreferences.Editor editor;
     DAL dalObj = new DAL(this);
-    SQLiteDatabase db;
-    Locale locale;
-    boolean isEnglishLanguage;
-    BestTime_DBHelper bestTimeDbHelper;
-    String imagUri[][]= new String[8][2];
+
     int drawable_images[]= new int[]{
             R.drawable.img01,
             R.drawable.img02,
@@ -122,12 +117,6 @@ public class MainActivity extends Activity {
 
                 startActivity(new Intent(getApplicationContext(), SelectingImages.class));
                 startActivity(getIntent());
-                //startActivity(getIntent(), ActivityOptions.makeSceneTransitionAnimation(SelectingImages).toBundle());
-
-
-/*
-                loadImagefromGallery(v);
-                Toast.makeText(getApplicationContext(), "one picture at the time", Toast.LENGTH_SHORT).show();*/
             }
         });
 
