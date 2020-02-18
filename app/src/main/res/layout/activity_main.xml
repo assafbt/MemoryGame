@@ -14,7 +14,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -24,9 +24,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="50dp"
             android:background="#D32C721C"
-            android:orientation="vertical"
-            android:paddingHorizontal="15dp"
-            android:paddingVertical="10dp">
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/MainTitle1"
@@ -85,6 +83,7 @@
                 android:text="@string/reset_imgs"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
+                style="?android:attr/buttonBarStyle"
                 android:textSize="20sp" />
 
             <Button
@@ -96,6 +95,7 @@
                 android:text="@string/reset_score"
                 android:textAlignment="center"
                 android:textColor="#ffffff"
+                style="?android:attr/buttonBarStyle"
                 android:textSize="20sp" />
         </LinearLayout>
 
@@ -104,8 +104,6 @@
             android:id="@+id/ScoreBoard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/resetLL"
-            android:layout_alignEnd="@+id/resetLL"
             android:background="@drawable/scoreboard2"
             android:orientation="vertical"
             android:paddingTop="15dp"
@@ -193,9 +191,6 @@
                     android:textColor="#ffffff" />
             </LinearLayout>
         </LinearLayout>
-        <!--
-            </FrameLayout>
-        -->
 
         <Button
             android:id="@+id/infoBtn"
